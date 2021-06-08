@@ -90,3 +90,37 @@ void display_head(t_node* stack)
         printf("The stack is empty.\n");
     }
 }
+
+int		is_stack_empty(t_node *stack)
+{
+	if (stack == NULL)
+	{
+		pstr("stack is empty");
+		return(1);
+	}
+	return(0);
+}
+t_node *	build_stack_a(char *str, int argc)
+{
+	t_node *stack_a = NULL;
+	init_linked_list(stack_a);
+	int i;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!ft_isdigit(str[i]) && !is_invisible_char(str[i]))
+			pstr("not a digit and not a space");
+		i++;
+	}
+	i = 0;
+	while (str[i] != '\0')
+	{
+		while(is_invisible_char(str[i]))
+			i++;
+		stack_a = push(ft_atoi(&str[i]), stack_a);
+		while(ft_isdigit(str[i]))
+			i++;
+	}
+	reverse_stack(&stack_a);
+	return(stack_a);
+}

@@ -1,4 +1,7 @@
 # push_swap
+**to do l**
+- build_stack_b??? 
+- uniformiser les pointeurs (pas de return)
 
 **compil**
 ARG = "4 67 3 87 23"; ./push_swap $ARG | wc -l
