@@ -2,13 +2,12 @@
 
 void	function_2(t_node **stack)
 {
-	stack = push(89, (*stack));
-	display_stack(stack);
-
+	*stack = push(89, *stack);
 }
 
 void	function_1(t_node **stack)
-{	
+{
+
 	function_2(stack);
 
 }
@@ -22,8 +21,11 @@ int		main(int argc, char **argv)
 	init_linked_list(stack_a);
 
 	stack_a = build_stack_a("12 15 42",0);
+	display_stack(stack_a);
+	stack_a= push(89, stack_a);
 	function_1(&stack_a);
-	// display_stack(stack_a);
+	display_stack(stack_a);
+
 	return (0);
 
 
@@ -35,7 +37,7 @@ int		main(int argc, char **argv)
 	// t_node *stack_b = NULL;
 	// init_linked_list(stack_a);
 	// init_linked_list(stack_b);
-	
+
 	// pstr("test sa 1...");
 	// // stack_a = build_stack_a("", 0);
 	// // get_swap("sa", stack_a, stack_b);
@@ -47,7 +49,7 @@ int		main(int argc, char **argv)
 	// pint(1);
 	// get_swap("sa", &stack_a, &stack_b);
 	// pint(2);
-	
+
 	// display_stack(stack_a);
 	// pint(3);
 
