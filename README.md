@@ -6,6 +6,7 @@ ARG = "4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
 
 make checker ; ARG="4 67 3 87 23"; ./checker $ARG
 make test ; ARG="4 67 3 87 23"; ./test $ARG
+make test ; ./test $ARG
 
 **to do**
 - makefile for automated testing

@@ -141,7 +141,7 @@ void swap_action(t_node **stack)
 	(*stack) = push(tmp_first, (*stack));
 }
 
-void	get_swap(char *cmd, t_node *stack_a, t_node *stack_b)
+void	get_swap(char *cmd, t_node **stack_a, t_node **stack_b)
 {
 	if (ft_strncmp(cmd, "sa", 3) == 0)
 	{
@@ -194,36 +194,60 @@ int		main(int argc, char **argv)
 	printf(RED"I am the main of "PURPLE"test_actions\n"NO_COLOR);
 	//to do : If no argument is given checker stops and displays nothing.
 
-	//create and fill stack_a
+	/**
+	 * test swap
+	*/
+	pstr("testing sa...");
 	t_node *stack_a = NULL;
-	init_linked_list(stack_a);
-	stack_a = build_stack_a(argv[1], argc);
-	//create stack_b
 	t_node *stack_b = NULL;
-	stack_b = init_linked_list(stack_b);
+	init_linked_list(stack_a);
+	// stack_a = build_stack_a("", 0);
+	// get_swap("sa", stack_a, stack_b);
+	// display_stack(stack_a);
+	stack_a = build_stack_a("1 2", 0);
+	// swap_action(&stack_a);
 
-	//dealing with the commands
-	char *cmd;
-	while (get_next_line(0, &cmd) > 0)
-	{
-		if (ft_strncmp(cmd, "sa", 3) == 0 || ft_strncmp(cmd, "sb", 3) == 0 || strncmp(cmd, "ss", 3) == 0)
-		{
-			get_swap(cmd, stack_a, stack_b);
-		}
-		else if (ft_strncmp(cmd, "pa", 3) == 0 || ft_strncmp(cmd, "pb", 3) == 0)
-		{
-			get_push(cmd, stack_a, stack_b);
-		}
-		else if (ft_strncmp(cmd, "ra", 3) == 0 || ft_strncmp(cmd, "rb", 3) == 0 || ft_strncmp(cmd, "rr", 3) == 0)
-		{
-			get_rotate(cmd, stack_a, stack_b);
-		}
-		else if (ft_strncmp(cmd, "rra", 4) == 0 || ft_strncmp(cmd, "rrb", 4) == 0 || ft_strncmp(cmd, "rrr", 4) == 0)
-		{
-			get_reverse(cmd, stack_a, stack_b);
-		}
-		// else
-		// 	exit(0);
-	}
+	get_swap("sa", stack_a, stack_b);
+	display_stack(stack_a);
+	// pstr("testing sb...");
+	// char *cmd = "sb";
+	// t_node *stack_b = NULL;
+	// stack_b = init_linked_list(stack_b);
+	// stack_b = build_stack_b("4 67 3 87 23", 0);
+
+
+
+
+	// //create and fill stack_a
+	// t_node *stack_a = NULL;
+	// init_linked_list(stack_a);
+	// stack_a = build_stack_a(argv[1], argc);
+	// //create stack_b
+	// t_node *stack_b = NULL;
+	// stack_b = init_linked_list(stack_b);
+
+	// //dealing with the commands
+	// char *cmd;
+	// while (get_next_line(0, &cmd) > 0)
+	// {
+	// 	if (ft_strncmp(cmd, "sa", 3) == 0 || ft_strncmp(cmd, "sb", 3) == 0 || strncmp(cmd, "ss", 3) == 0)
+	// 	{
+	// 		get_swap(cmd, stack_a, stack_b);
+	// 	}
+	// 	else if (ft_strncmp(cmd, "pa", 3) == 0 || ft_strncmp(cmd, "pb", 3) == 0)
+	// 	{
+	// 		get_push(cmd, stack_a, stack_b);
+	// 	}
+	// 	else if (ft_strncmp(cmd, "ra", 3) == 0 || ft_strncmp(cmd, "rb", 3) == 0 || ft_strncmp(cmd, "rr", 3) == 0)
+	// 	{
+	// 		get_rotate(cmd, stack_a, stack_b);
+	// 	}
+	// 	else if (ft_strncmp(cmd, "rra", 4) == 0 || ft_strncmp(cmd, "rrb", 4) == 0 || ft_strncmp(cmd, "rrr", 4) == 0)
+	// 	{
+	// 		get_reverse(cmd, stack_a, stack_b);
+	// 	}
+	// 	// else
+	// 	// 	exit(0);
+	// }
 	return (0);
 }
