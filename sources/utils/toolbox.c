@@ -2,9 +2,22 @@
 
 int is_invisible_char(char c)
 {
-    if (c == ' ' || c == '\t' || c == '\v'|| c == '\r' || c == '\v')
+    if (c == ' ' || c == '\t' || c == '\v'|| c == '\r')
         return (1);
     return (0);
+}
+
+int is_invisible_str(char *str)
+{
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        if (is_invisible_char(str[i]) == 1)
+            i++;
+        else
+            return (0);
+    }
+    return (1);
 }
 
 int   count_char_in_2d_array(int height, char **double_array)

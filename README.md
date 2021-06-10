@@ -1,7 +1,12 @@
 # push_swap
-**to do l**
-- build_stack_b??? 
+**to do**
+
+**done**
+- build_stack_b???
 - uniformiser les pointeurs (pas de return)
+
+**documentation**
+- reminder on pointer and why to use double pointer for a linked list : https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/
 
 **compil**
 ARG = "4 67 3 87 23"; ./push_swap $ARG | wc -l
@@ -87,3 +92,6 @@ par un ’\n’ sur la sortie standard.
 Errorsuivi d’un ’\n’ sur lasortie d’erreur.Par exemple si certains paramètres
 ne sont pas des nombres, certains paramètresne tiennent pas dans unint,
 s’il y a des doublons, ou bien sûr si une instructionn’existe pas ou est mal formatée.
+
+**test to do**
+- stack with "", "     ", "0    "

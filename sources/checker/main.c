@@ -10,7 +10,7 @@ int		main(int argc, char **argv)
 	//create and fill stack_a
 	t_node *stack_a = NULL;
 	init_linked_list(stack_a);
-	stack_a = build_stack_a(argv[1], argc);
+	stack_a = build_stack(argv[1], argc);
 	//create stack_b
 	t_node *stack_b = NULL;
 	stack_b = init_linked_list(stack_b);

@@ -24,33 +24,29 @@ void	reverse_action(t_node **stack_reversed)
     	    tmp = tmp->next;
     	}
 		//push data of the last node to the top of the stack
-		(*stack_reversed) = push(tmp->data, (*stack_reversed));
+		// push(tmp->data, (*stack_reversed));
+		push(tmp->data, stack_reversed);
+
 		//delete last node
 		free(penultimate->next);
 		penultimate->next = NULL;
 	}
 }
 
-void	get_reverse(char *cmd, t_node *stack_a, t_node *stack_b)
+void	get_reverse(char *cmd, t_node **stack_a, t_node **stack_b)
 {
 	if (ft_strncmp(cmd, "rra", 4) == 0)
 	{
-		reverse_action(&stack_a);
-		display_stack(stack_a);
-
+		reverse_action(stack_a);
 	}
 	else if (ft_strncmp(cmd, "rrb", 4) == 0)
 	{
-		reverse_action(&stack_b);
-		display_stack(stack_b);
-
+		reverse_action(stack_b);
 	}
 	else if (ft_strncmp(cmd, "rrr", 4) == 0)
 	{
-		reverse_action(&stack_a);
-		reverse_action(&stack_b);
-		// display_stack(stack_a);
-		// display_stack(stack_b);
+		reverse_action(stack_a);
+		reverse_action(stack_b);
 	}
 }
 
@@ -76,20 +72,20 @@ void	rotate_action(t_node **stack_rotated)
 	new_node->next = NULL;
 }
 
-void	get_rotate(char *cmd, t_node *stack_a, t_node *stack_b)
+void	get_rotate(char *cmd, t_node **stack_a, t_node **stack_b)
 {
 	if (ft_strncmp(cmd, "ra", 3) == 0)
 	{
-		rotate_action(&stack_a);
+		rotate_action(stack_a);
 	}
 	else if (ft_strncmp(cmd, "rb", 3) == 0)
 	{
-		rotate_action(&stack_b);
+		rotate_action(stack_b);
 	}
 	else if (ft_strncmp(cmd, "rr", 3) == 0)
 	{
-		rotate_action(&stack_a);
-		rotate_action(&stack_b);
+		rotate_action(stack_a);
+		rotate_action(stack_b);
 	}
 }
 
@@ -99,20 +95,18 @@ void push_action(t_node **stack_pushed, t_node **stack_received)
 		return;
 	int tmp = (*stack_pushed)->data;
 	pop(stack_pushed);
-	(*stack_received) = push(tmp, (*stack_received));
+	push(tmp, stack_received);
 }
 
-void	get_push(char *cmd, t_node *stack_a, t_node *stack_b)
+void	get_push(char *cmd, t_node **stack_a, t_node **stack_b)
 {
 	if (ft_strncmp(cmd, "pa", 3) == 0)
 	{
-		push_action(&stack_b, &stack_a);
-		display_stack(stack_a);
-		display_stack(stack_b);
+		push_action(stack_b, stack_a);
 	}
 	else if (ft_strncmp(cmd, "pb", 3) == 0)
 	{
-		push_action(&stack_a, &stack_b);
+		push_action(stack_a, stack_b);
 	}
 }
 
@@ -137,38 +131,38 @@ void	get_push(char *cmd, t_node *stack_a, t_node *stack_b)
 
 void swap_action(t_node **stack)
 {
+
 	if (is_stack_empty((*stack)))
 		return;
-    pint(20);
+
+	if ((*stack)->next == NULL)
+	{
+		pstr("only one node");
+		return;
+	}
+
 	int tmp_first;
-    pint(21);
 	int tmp_second = (*stack)->data;
-    pint(22);
-
 	pop(stack);
-
 	tmp_first = (*stack)->data;
 	pop(stack);
-	(*stack) = push(tmp_second, (*stack));
-	(*stack) = push(tmp_first, (*stack));
+	push(tmp_second, stack);
+	push(tmp_first, stack);
 }
 
 void	get_swap(char *cmd, t_node **stack_a, t_node **stack_b)
 {
 	if (ft_strncmp(cmd, "sa", 3) == 0)
 	{
-        pint(10);
-		swap_action(*stack_a);
-	    // display_stack(stack_a);
-        pint(11);
+		swap_action(stack_a);
 	}
-	// else if (ft_strncmp(cmd, "sb", 3) == 0)
-	// {
-	// 	swap_action(&stack_b);
-	// }
-	// else if (ft_strncmp(cmd, "ss", 3) == 0)
-	// {
-	// 	swap_action(&stack_a);
-	// 	swap_action(&stack_b);
-	// }
+	else if (ft_strncmp(cmd, "sb", 3) == 0)
+	{
+		swap_action(stack_b);
+	}
+	else if (ft_strncmp(cmd, "ss", 3) == 0)
+	{
+		swap_action(stack_a);
+		swap_action(stack_b);
+	}
 }
