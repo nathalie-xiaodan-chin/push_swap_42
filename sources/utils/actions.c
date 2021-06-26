@@ -55,7 +55,7 @@ void	get_reverse(char *cmd, t_node **stack_a, t_node **stack_b)
 // rr : ra et rb en même temps.
 void	rotate_action(t_node **stack_rotated)
 {
-	if (is_stack_empty((*stack_rotated)))
+	if (is_stack_empty((*stack_rotated)) || (*stack_rotated)->next == NULL)
 		return;
 	//used to go through the while loop
     t_node *tmp =(*stack_rotated);

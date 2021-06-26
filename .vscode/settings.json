@@ -4,6 +4,12 @@
 		"stack.h": "c",
 		"struct.h": "c",
 		"stdlib.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"array": "c",
+		"string": "c",
+		"string_view": "c",
+		"vector": "c",
+		"checker.h": "c",
+		"limits": "c"
 	}
 }

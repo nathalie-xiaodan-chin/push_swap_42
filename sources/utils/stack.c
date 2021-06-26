@@ -60,7 +60,7 @@ void push(int data, t_node** stack)
 void pop(t_node **stack)
 {
     if((*stack) != NULL){
-        printf("Element popped: %d\n",(*stack)->data);
+        // printf("Element popped: %d\n",(*stack)->data);
         t_node* tmp = (*stack);
         (*stack) = (*stack)->next;
         // free(tmp);
@@ -110,6 +110,7 @@ int		is_stack_empty(t_node *stack)
 	}
 	return(0);
 }
+
 t_node *	build_stack(char *str, int argc)
 {
 	t_node *stack_a = NULL;
@@ -122,12 +123,15 @@ t_node *	build_stack(char *str, int argc)
 
     while (str[i] != '\0')
 	{
-		if (!ft_isdigit(str[i]) && !is_invisible_char(str[i]))
+		if (!ft_isdigit(str[i]) && !is_invisible_char(str[i]) && str[i] != '-')
+        {
 			pstr("not a digit and not a space");
+            return(0);
+        }
 		i++;
 	}
-	i = 0;
 
+	i = 0;
 	while (str[i] != '\0')
 	{
 		while(is_invisible_char(str[i]))
@@ -145,9 +149,10 @@ t_node *	build_stack(char *str, int argc)
         if (ft_atoi(&str[i]) != 0)
 		    push(ft_atoi(&str[i]), &stack_a);
 
-		while(ft_isdigit(str[i]))
+		while(ft_isdigit(str[i]) || str[i] == '-')
 			i++;
 	}
+
 	reverse_stack(&stack_a);
 	return(stack_a);
 }

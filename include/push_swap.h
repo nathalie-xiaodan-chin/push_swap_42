@@ -10,7 +10,7 @@
 # include "stack.h"
 # include "checker.h"
 # include "struct.h"
-
+# include "actions.h"
 
 # define RED "\033[1;31m"
 # define BLACK "\033[1;30m"

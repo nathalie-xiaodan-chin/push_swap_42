@@ -1,7 +1,11 @@
 # push_swap
 **to do**
+- gérer les str MAIS AUSSI LES INT
+- gérer les erreurs si ce n'est pas un chiffre
+- algo à trouver
 
 **done**
+- entier positif et négatif
 - build_stack_b???
 - uniformiser les pointeurs (pas de return)
 
@@ -95,3 +99,19 @@ s’il y a des doublons, ou bien sûr si une instructionn’existe pas ou est ma
 
 **test to do**
 - stack with "", "     ", "0    "
+
+**pseudo code**
+9 11 10
+- Need :
+head
+current = head->next
+prev = head
+tmp
+- first loop
+9 < 11 (current < next>)
+current = current->next
+- second loop
+11 > 10 (current > next):
+  - while 10 >= prev
+  - swap the value of 11 and 10 (so prev and current )
+
