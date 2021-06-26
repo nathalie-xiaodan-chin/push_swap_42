@@ -1,20 +1,18 @@
 #include "../include/push_swap.h"
 /**
- * unit test swap
+ * unit test function
 */
 
-// 	to do
-// 	build_stack("101 100 110 111", 0);
-// 	get_push("pb", a, b);
-// 	get_push("pb", a, b);
-// 	get_push("pb", a, b);
-// 	get_rotate("ra", a, b);
+
+
+
+/**
+ * unit test main
+*/
 
 int		main(int argc, char **argv)
 {
-	printf(RED"I am the main of "PURPLE"test_actions\n"NO_COLOR);
-
-	pstr("unit testing vroum...");printf("\n");
+	printf(PURPLE"unit testing vroum...\n\n"NO_COLOR);
 	t_node *stack_a = NULL;
 	t_node *stack_b = NULL;
 	init_linked_list(stack_a);
@@ -22,20 +20,50 @@ int		main(int argc, char **argv)
 
 	stack_a = build_stack("101 100 110 111",  0);
 
-	pstr("stack_a before test");display_stack(stack_a);
-	pstr("stack_b before test");display_stack(stack_b);	printf("\n");
 	get_push("pb", &stack_a, &stack_b);
 	get_push("pb", &stack_a, &stack_b);
 	get_push("pb", &stack_a, &stack_b);
 	get_rotate("ra", &stack_a, &stack_b);
 
-	pstr("stack_a after test");display_stack(stack_a);
-	pstr("stack_b after test");display_stack(stack_b);printf("\n");
+	t_node *correct_a;
+	t_node *correct_b;
+	init_linked_list(correct_a);
+	init_linked_list(correct_b);
+	correct_a = build_stack("111", 0);
+	correct_b = build_stack("110 100 101", 0);
+
+	while (correct_a != NULL)
+	{
+		if (correct_a->data == stack_a->data)
+		{
+			printf(GREEN"stack_a %d | correct_a %d\n"NO_COLOR, stack_a->data, correct_a->data);
+			stack_a = stack_a->next;
+			correct_a = correct_a->next;
+		}
+		else
+		{
+			printf(RED"stack_a->data is %d and should be %d\n"NO_COLOR, stack_a->data, correct_a->data);
+			exit(0);
+		}
+	}
+	printf("\n");
+	while (correct_b != NULL)
+	{
+		if (correct_b->data == stack_b->data)
+		{
+			printf(GREEN"stack_b %d | correct_b %d\n"NO_COLOR, stack_b->data, correct_b->data);
+			stack_b = stack_b->next;
+			correct_b = correct_b->next;
+		}
+		else
+		{
+			printf(RED"stack_b->data is %d and should be %d\n"NO_COLOR, stack_b->data, correct_b->data);
+			exit(0);
+		}
+	}
 
 
-
-
-	pstr("end of unit testing...");
+	printf("\n");printf(PURPLE"end of unit testing..."NO_COLOR);
 	return (0);
 }
 
