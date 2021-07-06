@@ -3,6 +3,6 @@
 # include "struct.h"
 
 
-t_node *	build_stack(char *str, int argc);
+// t_node *	build_stack(char *str, int argc);
 
 #endif

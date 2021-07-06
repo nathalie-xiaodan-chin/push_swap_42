@@ -87,6 +87,7 @@ void	get_rotate(char *cmd, t_node **stack_a, t_node **stack_b)
 		rotate_action(stack_a);
 		rotate_action(stack_b);
 	}
+	printf("%s\n", cmd);
 }
 
 void push_action(t_node **stack_pushed, t_node **stack_received)
@@ -103,11 +104,13 @@ void	get_push(char *cmd, t_node **stack_a, t_node **stack_b)
 	if (ft_strncmp(cmd, "pa", 3) == 0)
 	{
 		push_action(stack_b, stack_a);
+
 	}
 	else if (ft_strncmp(cmd, "pb", 3) == 0)
 	{
 		push_action(stack_a, stack_b);
 	}
+	printf("%s\n", cmd);
 }
 
 // void swap_action(t_node **stack)

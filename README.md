@@ -1,8 +1,15 @@
 # push_swap
+
+
+https://discord.com/channels/774300457157918772/817041043764805692/850354416813080576
+
+
 **to do**
+- main : find from argv
+- output ?
 - gérer les str MAIS AUSSI LES INT
 - gérer les erreurs si ce n'est pas un chiffre
-- algo à trouver
+
 
 **done**
 - entier positif et négatif
@@ -13,12 +20,24 @@
 - reminder on pointer and why to use double pointer for a linked list : https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/
 
 **compil**
+ARG="4 67 3 87 23" && make push_swap  && ./push_swap $ARG | ./checker_Mac $ARG
+make push_swap && ARG="4 67 3 87 23"   && ./push_swap $ARG | ./checker_Mac $ARG
+make push_swap && ARG="0" ./push_swap $ARG | ./checker_Mac $ARG
+
+ARG="4 67 3 87 23" && make push_swap  && ./push_swap $ARG
+ARG="2 1 3 6 5 8" && make push_swap  && ./push_swap $ARG
+
+
+
 ARG = "4 67 3 87 23"; ./push_swap $ARG | wc -l
 ARG = "4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
 
 make checker ; ARG="4 67 3 87 23"; ./checker $ARG
 make test ; ARG="4 67 3 87 23"; ./test $ARG
 make test ; ./test $ARG
+
+
+make cleaner && make push_swap && ARG="4 67 3 87 23" && ./push_swap $ARG && ./checker $ARG
 
 **to do**
 - makefile for automated testing
@@ -114,4 +133,10 @@ current = current->next
 11 > 10 (current > next):
   - while 10 >= prev
   - swap the value of 11 and 10 (so prev and current )
+
+
+
+
+
+
 

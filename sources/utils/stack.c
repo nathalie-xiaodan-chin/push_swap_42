@@ -111,13 +111,13 @@ int		is_stack_empty(t_node *stack)
 	return(0);
 }
 
-t_node *	build_stack(char *str, int argc)
+t_node *	build_stack(char *str, int *stack_size)
 {
 	t_node *stack_a = NULL;
 	init_linked_list(stack_a);
 	int i;
 	i = 0;
-
+    int size = 0;
     if (is_invisible_str(&str[i]) == 1)
         return(0);
 
@@ -141,18 +141,24 @@ t_node *	build_stack(char *str, int argc)
         if (str[i] == '0')
         {
 		    push(0, &stack_a);
+            size = 1 + size;
             // i++;
         }
         while(is_invisible_char(str[i]))
 			i++;
         //now atoi will return 0 only if there is an error
         if (ft_atoi(&str[i]) != 0)
-		    push(ft_atoi(&str[i]), &stack_a);
+		{
+            push(ft_atoi(&str[i]), &stack_a);
+            size = 1 + size;
+        }
 
 		while(ft_isdigit(str[i]) || str[i] == '-')
 			i++;
 	}
 
-	reverse_stack(&stack_a);
+    reverse_stack(&stack_a);
+    *stack_size = size;
+
 	return(stack_a);
 }

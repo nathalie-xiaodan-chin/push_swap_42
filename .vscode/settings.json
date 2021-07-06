@@ -10,6 +10,7 @@
 		"string_view": "c",
 		"vector": "c",
 		"checker.h": "c",
-		"limits": "c"
+		"limits": "c",
+		"algorithm": "c"
 	}
 }
