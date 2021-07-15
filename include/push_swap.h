@@ -12,6 +12,7 @@
 # include "struct.h"
 # include "actions.h"
 
+
 # define RED "\033[1;31m"
 # define BLACK "\033[1;30m"
 # define GREEN "\033[1;32m"
@@ -22,6 +23,10 @@
 # define WHITE "\033[1;37m"
 # define NO_COLOR "\033[0m"
 
+void	test_radix_sort(char *list_nb);
+int 	is_stack_sorted(t_node *stack);
+void	three_nb_sort(t_node **stack_a, int n_elem);
+void	radix_sort(t_node **stack_a, int n_elem);
 
 
 #endif

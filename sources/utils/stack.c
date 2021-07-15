@@ -1,5 +1,45 @@
 #include "../../include/push_swap.h"
 
+/* Given a reference (pointer to pointer) to the head of a list
+   and a position, deletes the node at the given position */
+void delete_node(t_node **head_ref, int position) //TO BE CHANGED
+{
+   // If linked list is empty
+   if (*head_ref == NULL)
+      return;
+
+   // Store head node
+   t_node * temp = *head_ref;
+
+    // If head needs to be removed
+    if (position == 0)
+    {
+        *head_ref = temp->next;   // Change head
+        free(temp);               // free old head
+        return;
+    }
+
+    // Find previous node of the node to be deleted
+    for (int i=0; temp!=NULL && i<position-1; i++)
+         temp = temp->next;
+
+    // If position is more than number of nodes
+    if (temp == NULL || temp->next == NULL)
+         return;
+
+    // Node temp->next is the node to be deleted
+    // Store pointer to the next of node to be deleted
+    t_node *next = temp->next->next;
+
+    // Unlink the node from linked list
+    free(temp->next);  // Free memory
+
+    temp->next = next;  // Unlink the deleted node from list
+}
+
+/**
+ * initialization of a linked list
+*/
 t_node* init_linked_list(t_node* head)
 {
     head = NULL;

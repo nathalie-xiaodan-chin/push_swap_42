@@ -11,6 +11,9 @@
 		"vector": "c",
 		"checker.h": "c",
 		"limits": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"unistd.h": "c",
+		"sort.h": "c",
+		"actions.h": "c"
 	}
 }

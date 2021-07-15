@@ -11,6 +11,7 @@ void		display_head(t_node* stack);
 void 		printReverse(t_node* head);
 int			is_stack_empty(t_node *stack);
 t_node *	build_stack(char *str, int *stack_size);
+void 		delete_node(t_node **head_ref, int position); //TO BE CHANGED
 
 
 

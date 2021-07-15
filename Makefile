@@ -21,7 +21,7 @@ SRCS_TEST		= 	${wildcard test_files/*.c}
 
 OBJS_CHECKER			= 	$(SRCS_UTILS:.c=.o) $(SRCS_CHECKER:.c=.o)
 OBJS_PUSH_SWAP			= 	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o)
-OBJS_TEST				= 	$(SRCS_UTILS:.c=.o) $(SRCS_TEST:.c=.o)
+OBJS_TEST				=	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(SRCS_TEST:.c=.o)
 
 RM				= 	rm -f
 
@@ -36,18 +36,17 @@ all:			push_swap checker test
 
 push_swap:		$(OBJS_PUSH_SWAP)
 				cd libft && $(MAKE)
-				gcc ${CFLAGS} -o push_swap $(OBJS_PUSH_SWAP) ${LIB_MLX} ${LIBFT} ${GNL}
-				rm $(OBJS_PUSH_SWAP)
+				gcc ${CFLAGS} -o push_swap $(OBJS_PUSH_SWAP) ${LIBFT} ${GNL}
+
 
 checker:		$(OBJS_CHECKER)
 				cd libft && $(MAKE)
-				gcc ${CFLAGS} -o checker $(OBJS_CHECKER) ${LIB_MLX} ${LIBFT} ${GNL}
-				rm $(OBJS_CHECKER)
+				gcc ${CFLAGS} -o checker $(OBJS_CHECKER) ${LIBFT} ${GNL}
+
 
 test:			$(OBJS_TEST)
-				cd libft && $(MAKE)
-				gcc ${CFLAGS} -o test ${OBJS_TEST} ${LIB_MLX} ${LIBFT} ${GNL}
-				rm ${OBJS_TEST}
+				gcc -o test ${OBJS_TEST} ${LIBFT} ${GNL} ${LIBFT}
+
 
 clean:
 				rm -f  $(OBJS)
@@ -55,7 +54,7 @@ clean:
 				rm -f  $(OBJS_PUSH_SWAP)
 				rm -f ${EXECUTABLE}
 				rm -rf ${DEBUG}
-				rm -rf test/*.o
+				rm -rf test_files/*.o
 
 cleaner:		clean
 				$(RM) $(OBJS) $(OBJS_CHECKER) $(OBJS_PUSH_SWAP) $(NAME)

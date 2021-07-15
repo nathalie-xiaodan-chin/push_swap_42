@@ -9,7 +9,7 @@ https://discord.com/channels/774300457157918772/817041043764805692/8503544168130
 - output ?
 - gérer les str MAIS AUSSI LES INT
 - gérer les erreurs si ce n'est pas un chiffre
-
+- ARG="" && make push_swap  && ./push_swap $ARG SEGFAULT
 
 **done**
 - entier positif et négatif
@@ -20,6 +20,11 @@ https://discord.com/channels/774300457157918772/817041043764805692/8503544168130
 - reminder on pointer and why to use double pointer for a linked list : https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/
 
 **compil**
+
+ARG="1" && make push_swap  && ./push_swap $ARG | ./checker_Mac $ARG
+ARG="1" && make push_swap  && ./push_swap $ARG
+
+
 ARG="4 67 3 87 23" && make push_swap  && ./push_swap $ARG | ./checker_Mac $ARG
 make push_swap && ARG="4 67 3 87 23"   && ./push_swap $ARG | ./checker_Mac $ARG
 make push_swap && ARG="0" ./push_swap $ARG | ./checker_Mac $ARG
