@@ -158,6 +158,7 @@ t_node *	build_stack(char *str, int *stack_size)
 	int i;
 	i = 0;
     int size = 0;
+    long long nb = 0;
     if (is_invisible_str(&str[i]) == 1)
         return(0);
 
@@ -165,8 +166,9 @@ t_node *	build_stack(char *str, int *stack_size)
 	{
 		if (!ft_isdigit(str[i]) && !is_invisible_char(str[i]) && str[i] != '-')
         {
-			pstr("not a digit and not a space");
-            return(0);
+			// pstr("not a digit and not a space");
+            write(1, "Error\n", 6);
+            exit(1);
         }
 		i++;
 	}
@@ -189,6 +191,15 @@ t_node *	build_stack(char *str, int *stack_size)
         //now atoi will return 0 only if there is an error
         if (ft_atoi(&str[i]) != 0)
 		{
+            nb = long_long_atoi(&str[i]); //check max int
+            // printf("%lu \n", nb);
+
+            if (nb > 2147483647 || nb < -2147483648)
+            {
+                pstr("int max");
+                write(1, "Error\n", 6);
+                exit(1);
+            }
             push(ft_atoi(&str[i]), &stack_a);
             size = 1 + size;
         }
@@ -199,6 +210,5 @@ t_node *	build_stack(char *str, int *stack_size)
 
     reverse_stack(&stack_a);
     *stack_size = size;
-
 	return(stack_a);
 }

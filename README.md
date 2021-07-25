@@ -1,10 +1,13 @@
+
 # push_swap
 
 
 https://discord.com/channels/774300457157918772/817041043764805692/850354416813080576
 
+https://discord.com/channels/774300457157918772/817041043764805692/819531131870642197
 
 **to do**
+nb negatif ????
 - main : find from argv
 - output ?
 - gérer les str MAIS AUSSI LES INT
@@ -20,6 +23,7 @@ https://discord.com/channels/774300457157918772/817041043764805692/8503544168130
 - reminder on pointer and why to use double pointer for a linked list : https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/
 
 **compil**
+ARG="5 1 3 4 2" && make push_swap  && ./push_swap $ARG | ./checker_Mac $ARG
 
 ARG="1" && make push_swap  && ./push_swap $ARG | ./checker_Mac $ARG
 ARG="1" && make push_swap  && ./push_swap $ARG

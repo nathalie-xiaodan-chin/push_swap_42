@@ -1,151 +1,379 @@
-#include "../include/push_swap.h"
-// #include "../include/sort.h"
+// #include "../include/push_swap.h"
 
-// void	three_nb_sort(t_node **stack_a, int n_elem)
+
+// int		main(int argc, char **argv)
 // {
-// 	int a;
-// 	int b;
-// 	int c;
-// 	t_node * tmp = (*stack_a);
+// 	char* str;
 
-// 	t_node *stack_b = NULL;
-// 	init_linked_list(stack_b);
+// 	// str = "";
+// 	// if (is_error(str) != 1)
+// 	// {
+// 	// 	printf("\n %d is_error should return 0 and now it return 1\n", __LINE__);
+// 	// }
 
-// 	a = tmp->data;
-// 	tmp = tmp->next;
-// 	b = tmp->data;
-// 	tmp = tmp->next;
-// 	c = tmp->data;
+// 	// str = NULL;
+// 	// if (is_error(str) != 1)
+// 	// {
+// 	// 	printf("\n %d is_error should return 0 and now it return 1\n", __LINE__);
+// 	// }
 
-// 	if (a > b && b < c && c > a)
-// 	{
-// 		get_swap("sa", stack_a, stack_b);
-// 	}
-// 	else if (a > b && b > c && c < a)
-// 	{
-// 		get_swap("sa", stack_a, stack_b);
-// 		get_reverse("rra", stack_a, stack_b);
-// 	}
-// 	else if (a > b && b < c && c < a)
-// 	{
-// 		get_rotate("ra", stack_a, stack_b);
-// 	}
-// 	else if (a < b && b > c && c > a)
-// 	{
-// 		get_swap("sa", stack_a, stack_b);
-// 		get_rotate("ra", stack_a, stack_b);
-// 	}
-// 	else if (a < b && b > c && c < a)
-// 	{
-// 		get_reverse("rra", stack_a, stack_b);
-// 	}
+// 	t_node *stack = NULL;
+// 	init_linked_list(stack);
+// 	int * size = 0;
+// 	// stack = build_stack("1 0 2      1", &size);
+// 	// if (is_duplicate_in_stack(stack) != 1)
+// 	// {
+// 	// 	printf("\n %d is_duplicate_in_stack should return 1 and now it return %d \n", __LINE__, is_duplicate_in_stack(stack));
+// 	// }
 
-// 	display_stack((*stack_a));
+// 	// stack = build_stack("1  0 2      ", &size);
+// 	// if (is_duplicate_in_stack(stack) != 0)
+// 	// {
+// 	// 	printf("\n %d is_duplicate_in_stack should return 0 and now it return %d \n", __LINE__, is_duplicate_in_stack(stack));
+// 	// }
 
+// 	// stack = build_stack("1  0 2 3 4 10 11 12 111 1111111 111111 22222", &size);
+// 	// if (is_duplicate_in_stack(stack) != 0)
+// 	// {
+// 	// 	printf("\n %d is_duplicate_in_stack should return 0 and now it return %d \n", __LINE__, is_duplicate_in_stack(stack));
+// 	// }
+
+// 	// stack = build_stack("11", &size);
+// 	// if (is_duplicate_in_stack(stack) != 0)
+// 	// {
+// 	// 	printf("\n %d is_duplicate_in_stack should return 0 and now it return %d \n", __LINE__, is_duplicate_in_stack(stack));
+// 	// }
+
+// 	// stack = build_stack("11 1", &size);
+// 	// if (is_duplicate_in_stack(stack) != 0)
+// 	// {
+// 	// 	printf("\n %d is_duplicate_in_stack should return 0 and now it return %d \n", __LINE__, is_duplicate_in_stack(stack));
+// 	// }
+
+// 	// stack = build_stack("11 1 1", &size);
+// 	// if (is_duplicate_in_stack(stack) != 1)
+// 	// {
+// 	// 	printf("\n %d is_duplicate_in_stack should return 1 and now it return %d \n", __LINE__, is_duplicate_in_stack(stack));
+// 	// }
+
+// 	// stack = build_stack("1 1", &size);
+// 	// if (is_duplicate_in_stack(stack) != 1)
+// 	// {
+// 	// 	printf("\n %d is_duplicate_in_stack should return 1 and now it return %d \n", __LINE__, is_duplicate_in_stack(stack));
+// 	// }
+
+
+// 	// size = 0;
+// 	// stack = build_stack("1 2147483647 0", &size);
+// 	// if (is_max_int_in_stack(stack) != 1)
+// 	// {
+// 	// 	printf("\n %d is_max_int_in_stack should return 0 and now it return 1\n", __LINE__);
+// 	// }
+
+
+// 	// size = 0;
+// 	// stack = build_stack("1 2147483648 0", &size);
+// 	// if (is_max_int_in_stack(stack) != 1)
+// 	// {
+// 	// 	printf("\n %d is_max_int_in_stack should return 1 and now it return 0\n", __LINE__);
+// 	// }
+
+
+// 	// size = 0;
+// 	// stack = build_stack("1 4000000000 0", &size);
+// 	// if (is_max_int_in_stack(stack) != 1)
+// 	// {
+// 	// 	printf("\n %d is_max_int_in_stack should return 1 and now it return 0\n", __LINE__);
+// 	// }
+
+
+// 	size = 0;
+// 	// stack = build_stack("1 4000000000 0", &size);
+// 	// stack = build_stack("1 2147483648 0", &size);
+// 	stack = build_stack("19223372036854775806 0", &size);
+
+// 	// long int nb;
+// 	// nb = 4000000000;
+// 	// nb = 2147483648;
+
+// 	// printf("test lu %ld \n", nb);
+// 	// if (nb > 2147483647 || nb < -2147483648)
+// 	// 	pstr("stop");
+
+
+
+
+
+// 	// str = """ 2";
+// 	// if (is_error(str) != 1)
+// 	// {
+// 	// 	printf("\n %d is_error should return 0 and now it return 1\n", __LINE__);
+// 	// }
+
+
+// 	return (0);
 // }
 
-//find the smallest nb
-//find the biggest nb
 
-int		find_pos(t_node * list, int value)
-{
-	t_node *tmp = NULL;
-	tmp = list;
-	int i = 0;
-	while(tmp != NULL)
-	{
-		if (tmp->data != value)
-		{
-			tmp = tmp->next;
-			i++;
-		}
-		else
-			break;
-	}
-	return(i);
-}
-void		find_smallest_nb(t_node *list, int *s_value, int *s_pos, int biggest_nb)
-{
-	t_node *tmp = NULL;
-	tmp = list;
-	int smallest_value =  biggest_nb;
-	int smallest_pos = 0;
-	// pint(smallest_value);
+// /**
+//  * DRAFT
+// */
 
-	while(tmp != NULL)
-	{
-		// pint(tmp->data);
-		if (tmp->data < smallest_value)
-		{
-			smallest_value = tmp->data;
-			smallest_pos++;
-		}
-		tmp = tmp->next;
-	}
-	*s_value = smallest_value;
-	*s_pos = find_pos(list, smallest_value);
-}
+// 	// str = "123";
+// 	// if (is_duplicate(str) != 0)
+// 	// {
+// 	// 	printf("\n %d duplicate should return 0 and now it return 1\n", __LINE__);
+// 	// }
 
-void		find_biggest_nb(t_node *list, int *b_value, int *b_pos)
-{
-	int biggest_nb_value = 0;
-	int biggest_nb_pos = 0;
+// 	// str = "1231";
+// 	// if (is_duplicate(str) != 1)
+// 	// {
+// 	// 	printf("\n %d duplicate should return 0 and now it return 1\n", __LINE__);
+// 	// }
 
-	t_node *tmp = NULL;
-	tmp = list;
-	while(tmp != NULL)
-	{
-		if (tmp->data > biggest_nb_value)
-		{
-			biggest_nb_value = tmp->data;
-			biggest_nb_pos++;
-		}
-		tmp = tmp->next;
-	}
-	// *b_pos = biggest_nb_pos;
-	*b_value = biggest_nb_value;
-	*b_pos = find_pos(list, biggest_nb_value);
+// 	// str = "12222231";
+// 	// if (is_duplicate(str) != 1)
+// 	// {
+// 	// 	printf("\n %d duplicate should return 0 and now it return 1\n", __LINE__);
+// 	// }
 
-}
+// 	// str = "1 1";
+// 	// if (is_duplicate(str) != 1)
+// 	// {
+// 	// 	printf("\n %d duplicate should return 0 and now it return 1\n", __LINE__);
+// 	// }
+
+// 	// str = "5 1 3 4 2 0 0";
+// 	// if (is_duplicate(str) != 1)
+// 	// {
+// 	// 	printf("\n %d duplicate should return 0 and now it return 1\n", __LINE__);
+// 	// }
+
+// 	// str = "5 0 0";
+// 	// if (is_duplicate(str) != 1)
+// 	// {
+// 	// 	printf("\n %d duplicate should return 0 and now it return 1\n", __LINE__);
+// 	// }
+
+// 	// str = "5 1 3 4 2 0";
+// 	// if (is_duplicate(str) != 0)
+// 	// {
+// 	// 	printf("\n %d duplicate should return 0 and now it return 1\n", __LINE__);
+// 	// }
 
 
-int		main()
-{
-	t_node* stack_a = NULL;
-	init_linked_list(stack_a);
-	int count = 0; //from 1
-	stack_a = build_stack("10 12 42  15 10000", &count);
-	int smallest_nb_value = 0;
-	int smallest_nb_pos = 0;
-
-	int biggest_nb_value = 0;
-	int biggest_nb_pos = 0;
-
-	find_biggest_nb(stack_a, &biggest_nb_value, &biggest_nb_pos);
-	delete_node(&stack_a, biggest_nb_pos);
-	find_smallest_nb(stack_a, &smallest_nb_value, &smallest_nb_pos, biggest_nb_value);
-	delete_node(&stack_a, smallest_nb_pos);
-
-	// "12 15 42 10 10000"
-
-	// printf("smallest nb value: %d\n", smallest_nb_value);
-	// printf("smallest nb pos: %d\n", smallest_nb_pos);
-	// printf("biggest nb value: %d\n", biggest_nb_value);
-	// printf("biggest nb pos: %d\n", biggest_nb_pos);
 
 
-	t_node *stack_b = NULL;
-	init_linked_list(stack_b);
-	push(biggest_nb_value, &stack_b);
-	push(smallest_nb_value, &stack_b);
 
-	printf("stack_a :\n");display_stack(stack_a);
-	printf("stack_b :\n");display_stack(stack_b);
 
-	// three_nb_sort(&stack_a, count);
-	printf("stack_a :\n");display_stack(stack_a);
 
-	return(0);
-}
+
+
+
+
+
+
+
+
+
+
+
+// // // //find the smallest nb
+// // // //find the biggest nb
+
+// // // int		find_pos(t_node * list, int value)
+// // // {
+// // // 	t_node *tmp = NULL;
+// // // 	tmp = list;
+// // // 	int i = 0;
+// // // 	while(tmp != NULL)
+// // // 	{
+// // // 		if (tmp->data != value)
+// // // 		{
+// // // 			tmp = tmp->next;
+// // // 			i++;
+// // // 		}
+// // // 		else
+// // // 			break;
+// // // 	}
+// // // 	return(i);
+// // // }
+// // // void		find_smallest_nb(t_node *list, int *s_value, int *s_pos, int biggest_nb)
+// // // {
+// // // 	t_node *tmp = NULL;
+// // // 	tmp = list;
+// // // 	int smallest_value =  biggest_nb;
+// // // 	int smallest_pos = 0;
+// // // 	// pint(smallest_value);
+
+// // // 	while(tmp != NULL)
+// // // 	{
+// // // 		// pint(tmp->data);
+// // // 		if (tmp->data < smallest_value)
+// // // 		{
+// // // 			smallest_value = tmp->data;
+// // // 			smallest_pos++;
+// // // 		}
+// // // 		tmp = tmp->next;
+// // // 	}
+// // // 	*s_value = smallest_value;
+// // // 	*s_pos = find_pos(list, smallest_value);
+// // // }
+
+// // // void		find_biggest_nb(t_node *list, int *b_value, int *b_pos)
+// // // {
+// // // 	int biggest_nb_value = 0;
+// // // 	int biggest_nb_pos = 0;
+
+// // // 	t_node *tmp = NULL;
+// // // 	tmp = list;
+// // // 	while(tmp != NULL)
+// // // 	{
+// // // 		if (tmp->data > biggest_nb_value)
+// // // 		{
+// // // 			biggest_nb_value = tmp->data;
+// // // 			biggest_nb_pos++;
+// // // 		}
+// // // 		tmp = tmp->next;
+// // // 	}
+// // // 	// *b_pos = biggest_nb_pos;
+// // // 	*b_value = biggest_nb_value;
+// // // 	*b_pos = find_pos(list, biggest_nb_value);
+
+// // // }
+
+
+// // // void	four_nb_sort(t_node **stack_a, t_node**stack_b, int i)
+// // // {
+// // // 	if (i == 0)
+// // // 	{
+// // // 		get_push("pb", stack_a, stack_b);
+// // // 	}
+// // // 	else if (i == 1)
+// // // 	{
+// // // 		get_rotate("ra",stack_a, stack_b);
+// // // 		get_push("pb", stack_a, stack_b);
+// // // 	}
+// // // 	else if (i == 2)
+// // // 	{
+// // // 		get_rotate("ra",stack_a, stack_b);
+// // // 		get_rotate("ra",stack_a, stack_b);
+// // // 		get_push("pb", stack_a, stack_b);
+// // // 	}
+// // // 	else if (i == 3)
+// // // 	{
+// // // 		get_reverse("rra",stack_a, stack_b);
+// // // 		get_push("pb", stack_a, stack_b);
+// // // 	}
+// // // }
+
+// // // void	five_nb_sort(t_node **stack_a, t_node**stack_b, int i)
+// // // {
+// // // 	if (i == 0)
+// // // 	{
+// // // 		get_push("pb", stack_a, stack_b);
+// // // 	}
+// // // 	else if (i == 1)
+// // // 	{
+// // // 		get_rotate("ra",stack_a, stack_b);
+// // // 		get_push("pb", stack_a, stack_b);
+// // // 	}
+// // // 	else if (i == 2)
+// // // 	{
+// // // 		get_rotate("ra",stack_a, stack_b);
+// // // 		get_rotate("ra",stack_a, stack_b);
+// // // 		get_push("pb", stack_a, stack_b);
+// // // 	}
+// // // 	else if (i == 3)
+// // // 	{
+// // // 		get_rotate("rra",stack_a, stack_b);
+// // // 		get_rotate("rra",stack_a, stack_b);
+// // // 		get_push("pb", stack_a, stack_b);
+// // // 	}
+// // // 	else if (i == 4)
+// // // 	{
+// // // 		get_reverse("rra",stack_a, stack_b);
+// // // 		get_push("pb", stack_a, stack_b);
+// // // 	}
+// // // }
+
+
+
+// // int		main()
+// // {
+// // 	t_node* stack_a = NULL;
+// // 	init_linked_list(stack_a);
+
+// // 	t_node *stack_b = NULL;
+// // 	init_linked_list(stack_b);
+
+// // 	int count = 0; //starting from 1
+// // 	// stack_a = build_stack("10 12 42  15 10000", &count);
+// // 	// stack_a = build_stack("11 12 14 10 13", &count);
+// // 	// stack_a = build_stack("10 12 14 13 11", &count);
+// // 	// stack_a = build_stack("10 11 14 13 12", &count); //hardest for 5
+// // 	stack_a = build_stack("2 1 3 5 ", &count);
+
+// // 	int smallest_nb_value = 0;
+// // 	int smallest_nb_pos = 0; //starting from 0
+
+// // 	int biggest_nb_value = 0;
+// // 	int biggest_nb_pos = 0; //starting from 0
+
+// // 	if (count <= 3)
+// // 	{
+// // 		three_nb_sort(&stack_a, count);
+// // 	}
+// // 	else if (count == 4)
+// // 	{
+// // 		find_biggest_nb(stack_a, &biggest_nb_value, &biggest_nb_pos);
+// // 		find_smallest_nb(stack_a, &smallest_nb_value, &smallest_nb_pos, biggest_nb_value);
+// // 		four_nb_sort(&stack_a, &stack_b, smallest_nb_pos);
+// // 		three_nb_sort(&stack_a, count);
+// // 		get_push("pa", &stack_a, &stack_b);
+// // 	}
+// // 	else if (count == 5)
+// // 	{
+// // 		find_biggest_nb(stack_a, &biggest_nb_value, &biggest_nb_pos);
+// // 		// pint(biggest_nb_pos);
+// // 		five_nb_sort(&stack_a, &stack_b, biggest_nb_pos);
+// // 		find_smallest_nb(stack_a, &smallest_nb_value, &smallest_nb_pos, biggest_nb_value);
+// // 		four_nb_sort(&stack_a, &stack_b, smallest_nb_pos);
+// // 		// printf("stack_a :\n");display_stack(stack_a);
+// // 		three_nb_sort(&stack_a, count);
+// // 		//push biggest nb and smallest nb
+// // 		get_push("pa", &stack_a, &stack_b);
+// // 		get_push("pa", &stack_a, &stack_b);
+// // 		get_rotate("ra", &stack_a, &stack_b);
+// // 	}
+// // 	else if (count > 5)
+// // 	{
+// // 		radix_sort(&stack_a, count);
+// // 	}
+
+// // 	// "12 15 42 10 10000"
+
+// // 	// printf("smallest nb value: %d\n", smallest_nb_value);
+// // 	// printf("smallest nb pos: %d\n", smallest_nb_pos);
+// // 	// printf("biggest nb value: %d\n", biggest_nb_value);
+// // 	// printf("biggest nb pos: %d\n", biggest_nb_pos);
+
+
+// // 	// push(biggest_nb_value, &stack_b);
+// // 	// push(smallest_nb_value, &stack_b);
+
+// // 	// printf("stack_a :\n");display_stack(stack_a);
+// // 	// printf("stack_b :\n");display_stack(stack_b);
+
+// // 	// three_nb_sort(&stack_a, count);
+// // 	// push(stack_b->data, &stack_a);
+// // 	// pop(&stack_b);
+
+// // 	printf("stack_a :\n");display_stack(stack_a);
+// // 	printf("stack_b :\n");display_stack(stack_b);
+
+
+// // 	return(0);
+// // }
 
 

@@ -38,15 +38,18 @@ void	get_reverse(char *cmd, t_node **stack_a, t_node **stack_b)
 	if (ft_strncmp(cmd, "rra", 4) == 0)
 	{
 		reverse_action(stack_a);
+		write(1, "rra\n", 4);
 	}
 	else if (ft_strncmp(cmd, "rrb", 4) == 0)
 	{
 		reverse_action(stack_b);
+		write(1, "rrb\n", 4);
 	}
 	else if (ft_strncmp(cmd, "rrr", 4) == 0)
 	{
 		reverse_action(stack_a);
 		reverse_action(stack_b);
+		write(1, "rrr\n", 4);
 	}
 }
 
@@ -77,17 +80,20 @@ void	get_rotate(char *cmd, t_node **stack_a, t_node **stack_b)
 	if (ft_strncmp(cmd, "ra", 3) == 0)
 	{
 		rotate_action(stack_a);
+		write(1, "ra\n", 3);
 	}
 	else if (ft_strncmp(cmd, "rb", 3) == 0)
 	{
 		rotate_action(stack_b);
+		write(1, "rb\n", 3);
 	}
 	else if (ft_strncmp(cmd, "rr", 3) == 0)
 	{
 		rotate_action(stack_a);
 		rotate_action(stack_b);
+		write(1, "rr\n", 3);
 	}
-	printf("%s\n", cmd);
+	// printf("%s\n", cmd);
 }
 
 void push_action(t_node **stack_pushed, t_node **stack_received)
@@ -104,13 +110,14 @@ void	get_push(char *cmd, t_node **stack_a, t_node **stack_b)
 	if (ft_strncmp(cmd, "pa", 3) == 0)
 	{
 		push_action(stack_b, stack_a);
-
+		write(1, "pa\n", 3);
 	}
 	else if (ft_strncmp(cmd, "pb", 3) == 0)
 	{
 		push_action(stack_a, stack_b);
+		write(1, "pb\n", 3);
 	}
-	printf("%s\n", cmd);
+	// printf("%s\n", cmd);
 }
 
 // void swap_action(t_node **stack)
@@ -158,14 +165,17 @@ void	get_swap(char *cmd, t_node **stack_a, t_node **stack_b)
 	if (ft_strncmp(cmd, "sa", 3) == 0)
 	{
 		swap_action(stack_a);
+		write(1, "sa\n", 3);
 	}
 	else if (ft_strncmp(cmd, "sb", 3) == 0)
 	{
 		swap_action(stack_b);
+		write(1, "sb\n", 3);
 	}
 	else if (ft_strncmp(cmd, "ss", 3) == 0)
 	{
 		swap_action(stack_a);
 		swap_action(stack_b);
+		write(1, "ss\n", 3);
 	}
 }

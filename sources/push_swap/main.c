@@ -21,38 +21,63 @@ int 	is_stack_sorted(t_node *stack)
 }
 
 
-// int		main(int argc, char **argv)
-// {
-// 	char * list_nb = argv[1];
-// 	printf("%s\n", argv[1]);
+int		main(int argc, char **argv)
+{
+	char * list_nb = argv[1];
+	// printf("%s\n", argv[1]);
 
 
-// 	// test_radix_sort(list_nb);
+	// test_radix_sort(list_nb);
 
-// 	t_node *stack = NULL;
-// 	init_linked_list(stack);
-
-// 	int total_nb = 0;
-// 	stack = build_stack(list_nb, &total_nb);
-
-// 	pint(total_nb);
+	if (is_error(list_nb) != 0)
+	{
+		write(1, "Error\n", 6);
+		exit(1);
+	}
 
 
-// 	if (total_nb <= 3)
-// 	{
-// 		three_nb_sort(&stack, total_nb);
-// 	}
-// 	else if (total_nb > 500)
-// 	{
-// 		radix_sort(&stack, total_nb);
-// 	}
-// 	else
-// 	{
-// 		return (0);
-// 	}
+	t_node *stack = NULL;
+	init_linked_list(stack);
 
-// 	return (0);
-// }
+	int total_nb = 0;
+
+	stack = build_stack(list_nb, &total_nb);
+
+	if (is_max_int_in_stack(stack) != 0)
+	{
+		// pstr("is_max_int_in_stack");
+		write(1, "Error\n", 6);
+		exit(1);
+	}
+
+	if (is_duplicate_in_stack(stack) != 0)
+	{
+		pstr("is_duplicate_in_stack");
+		write(1, "Error\n", 6);
+		exit(1);
+	}
+
+
+	//if one or two ?
+	if (total_nb <= 3)
+	{
+		three_nb_sort(&stack, total_nb);
+	}
+	else if (total_nb <= 5)
+	{
+		five_or_four_nb(&stack, total_nb);
+	}
+	else if (total_nb > 500)
+	{
+		radix_sort(&stack, total_nb);
+	}
+	else
+	{
+		return (0);
+	}
+	// display_stack(stack);
+	return (0);
+}
 
 
 
@@ -63,9 +88,9 @@ int 	is_stack_sorted(t_node *stack)
 
 
 
-	// int i = 0;
-	// while (i < 10001)
-	// {
-	// 	printf("sa\n");
-	// 	i++;
-	// }
+// 	// int i = 0;
+// 	// while (i < 10001)
+// 	// {
+// 	// 	printf("sa\n");
+// 	// 	i++;
+// 	// }

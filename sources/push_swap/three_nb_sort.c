@@ -40,6 +40,6 @@ void	three_nb_sort(t_node **stack_a, int n_elem)
 		get_reverse("rra", stack_a, &stack_b);
 	}
 
-	display_stack((*stack_a));
+	// display_stack((*stack_a));
 
 }

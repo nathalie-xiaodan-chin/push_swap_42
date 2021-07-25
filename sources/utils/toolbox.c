@@ -1,5 +1,37 @@
 #include "../../include/push_swap.h"
 
+
+
+long long	long_long_atoi(const char *str)
+{
+	int i;
+	int neg;
+	long long result;
+
+	i = 0;
+	neg = 0;
+	result = 0;
+	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\t'
+	|| str[i] == '\n' || str[i] == '\r' || str[i] == '\v')
+		i++;
+	if (str[i] == '-')
+	{
+		neg = 1;
+	}
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+	{
+		result = (str[i] - 48) + (result * 10);
+		i++;
+	}
+	if (neg == 1)
+		return (result * (-1));
+	else
+		return (result);
+}
+
+
 int is_invisible_char(char c)
 {
     if (c == ' ' || c == '\t' || c == '\v'|| c == '\r')

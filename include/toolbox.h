@@ -3,6 +3,7 @@
 # include "struct.h"
 
 int is_invisible_char(char c);
+long long	long_long_atoi(const char *str);
 
 int   count_char_in_2d_array(int height, char **double_array);
 char**     allocate_2d_array(int size_width, int size_height);
