@@ -27,36 +27,34 @@ int		main(int argc, char **argv)
 	// printf("%s\n", argv[1]);
 
 
-	// test_radix_sort(list_nb);
-
-	if (is_error(list_nb) != 0)
-	{
-		write(1, "Error\n", 6);
-		exit(1);
-	}
-
 
 	t_node *stack = NULL;
 	init_linked_list(stack);
 
 	int total_nb = 0;
 
-	stack = build_stack(list_nb, &total_nb);
-
-	if (is_max_int_in_stack(stack) != 0)
+	// stack = build_stack(list_nb, &total_nb);
+	if (argc == 1)
 	{
-		// pstr("is_max_int_in_stack");
 		write(1, "Error\n", 6);
 		exit(1);
 	}
-
-	if (is_duplicate_in_stack(stack) != 0)
+	else if (argc == 2)
 	{
-		pstr("is_duplicate_in_stack");
-		write(1, "Error\n", 6);
-		exit(1);
+		stack = build_stack(list_nb, &total_nb);
 	}
-
+	else if (argc > 2)
+	{
+		int i = 1;
+		while (i != argc)
+		{
+			// printf("%s\n", argv[i]);
+			list_nb = ft_strjoin(list_nb, " ");
+			list_nb = ft_strjoin(list_nb, argv[i]);
+			i++;
+		}
+		stack = build_stack(list_nb, &total_nb);
+	}
 
 	//if one or two ?
 	if (total_nb <= 3)

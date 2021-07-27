@@ -105,10 +105,10 @@ void pop(t_node **stack)
         (*stack) = (*stack)->next;
         // free(tmp);
     }
-    else
-    {
-        printf("The stack is empty.\n");
-    }
+    // else
+    // {
+    //     printf("The stack is empty.\n");
+    // }
 }
 
 /**
@@ -145,7 +145,7 @@ int		is_stack_empty(t_node *stack)
 {
 	if (stack == NULL)
 	{
-		pstr("stack is empty");
+		// pstr("stack is empty");
 		return(1);
 	}
 	return(0);
@@ -159,14 +159,40 @@ t_node *	build_stack(char *str, int *stack_size)
 	i = 0;
     int size = 0;
     long long nb = 0;
+
+    if (is_empty(str) != 0)
+	{
+        // pstr("empty");
+		write(1, "Error\n", 6);
+		exit(1);
+	}
+
     if (is_invisible_str(&str[i]) == 1)
         return(0);
 
     while (str[i] != '\0')
 	{
-		if (!ft_isdigit(str[i]) && !is_invisible_char(str[i]) && str[i] != '-')
+		if (!ft_isdigit(str[i]) && !is_invisible_char(str[i]) && str[i] != '-' && str[i] != '+')
         {
 			// pstr("not a digit and not a space");
+            write(1, "Error\n", 6);
+            exit(1);
+        }
+		i++;
+	}
+
+    i = 0;
+    while (str[i] != '\0')
+	{
+		if (!ft_isdigit(str[i + 1]) && str[i] == '-')
+        {
+			// pstr("not a negatif nb");
+            write(1, "Error\n", 6);
+            exit(1);
+        }
+        else if (!ft_isdigit(str[i + 1]) && str[i] == '+')
+        {
+			// pstr("not a positif  nb");
             write(1, "Error\n", 6);
             exit(1);
         }
@@ -193,10 +219,9 @@ t_node *	build_stack(char *str, int *stack_size)
 		{
             nb = long_long_atoi(&str[i]); //check max int
             // printf("%lu \n", nb);
-
             if (nb > 2147483647 || nb < -2147483648)
             {
-                pstr("int max");
+                // pstr("int max");
                 write(1, "Error\n", 6);
                 exit(1);
             }
@@ -204,11 +229,18 @@ t_node *	build_stack(char *str, int *stack_size)
             size = 1 + size;
         }
 
-		while(ft_isdigit(str[i]) || str[i] == '-')
+		while(ft_isdigit(str[i]) || str[i] == '-' || str[i] == '+')
 			i++;
 	}
 
     reverse_stack(&stack_a);
     *stack_size = size;
+
+    if (is_duplicate_in_stack(stack_a) != 0)
+	{
+		// pstr("is_duplicate_in_stack");
+		write(1, "Error\n", 6);
+		exit(1);
+	}
 	return(stack_a);
 }

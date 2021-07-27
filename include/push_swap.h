@@ -14,7 +14,7 @@
 # include "sort.h"
 # include "error.h"
 
-
+# include "../libft/libft.h"
 
 # define RED "\033[1;31m"
 # define BLACK "\033[1;30m"

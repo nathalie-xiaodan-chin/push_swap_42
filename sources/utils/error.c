@@ -53,7 +53,7 @@ int 	is_duplicate_in_stack(t_node *stack)
 // 	return (0);
 // }
 
-int	is_error(char *str)
+int	is_empty(char *str)
 {
 	if (str == NULL || !ft_strncmp("",str, 1))
 	{

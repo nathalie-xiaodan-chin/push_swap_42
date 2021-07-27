@@ -2,6 +2,7 @@
 # define STACK_H
 # include "struct.h"
 
+int is_invisible_str(char *str);
 
 t_node*		init_linked_list(t_node* head);
 void		push(int data, t_node** stack);

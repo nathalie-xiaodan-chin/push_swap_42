@@ -15,6 +15,9 @@
 		"unistd.h": "c",
 		"sort.h": "c",
 		"actions.h": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"__locale": "c",
+		"error.h": "c",
+		"toolbox.h": "c"
 	}
 }
