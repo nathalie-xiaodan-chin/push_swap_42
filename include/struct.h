@@ -3,6 +3,7 @@
 
 typedef struct s_node {
     int data;
+    int total_node;
     struct s_node* next;
 } t_node;
 

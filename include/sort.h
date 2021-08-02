@@ -20,6 +20,7 @@ void	compare_middles(t_node**stack_a, t_node **stack_b);
 void	comparing_nb(t_node **stack_a, t_node **stack_b);
 int		insertion_sort(t_node **stack_a, int total_nb);
 
-int	find_smallest_nb_above_x(t_node*stack, int x);
+int	find_smallest_nb_above_x(t_node*stack, int x, int * total_node);
+void rotate_number_to_top(t_node **stack_a, int pos, int total_node);
 
 #endif
