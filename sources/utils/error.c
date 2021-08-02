@@ -6,6 +6,8 @@ int 	is_duplicate_in_stack(t_node *stack)
 	t_node *i = stack;
 	t_node *j = stack->next;
 
+	// printf("i->data %d\n", i->data);
+	// printf("j->data %d\n", j->data);
 
 	while(i != NULL)
 	{

@@ -20,11 +20,11 @@ int		find_pos(t_node * list, int value)
 	}
 	return(i);
 }
-void		find_smallest_nb(t_node *list, int *s_value, int *s_pos, int biggest_nb)
+void		find_smallest_nb(t_node *list, int *s_value, int *s_pos)
 {
 	t_node *tmp = NULL;
 	tmp = list;
-	int smallest_value =  biggest_nb;
+	int smallest_value = list->data;
 	int smallest_pos = 0;
 	// pint(smallest_value);
 
@@ -108,9 +108,14 @@ void	five_nb_sort(t_node **stack_a, t_node**stack_b, int i)
 	}
 	else if (i == 3)
 	{
-		get_rotate("rra",stack_a, stack_b);
-		get_rotate("rra",stack_a, stack_b);
+		// display_stack(*stack_a);
+
+		get_reverse("rra",stack_a, stack_b);
+		// display_stack(*stack_a);
+
+		get_reverse("rra",stack_a, stack_b);
 		get_push("pb", stack_a, stack_b);
+		// display_stack(*stack_b);
 	}
 	else if (i == 4)
 	{
@@ -140,21 +145,32 @@ void	five_or_four_nb(t_node **stack_a, int count)
 	if (count == 4)
 	{
 		find_biggest_nb((*stack_a), &biggest_nb_value, &biggest_nb_pos);
-		find_smallest_nb((*stack_a), &smallest_nb_value, &smallest_nb_pos, biggest_nb_value);
+		find_smallest_nb((*stack_a), &smallest_nb_value, &smallest_nb_pos);
 		four_nb_sort(stack_a, &stack_b, smallest_nb_pos);
-		three_nb_sort(stack_a, count);
+		three_nb_sort(stack_a);
 		get_push("pa", stack_a, &stack_b);
 	}
 	else if (count == 5)
 	{
 		find_biggest_nb((*stack_a), &biggest_nb_value, &biggest_nb_pos);
 		// pint(biggest_nb_pos);
+		// printf("biggest_nb_value %d\n", biggest_nb_value);
 		five_nb_sort(stack_a, &stack_b, biggest_nb_pos);
-		find_smallest_nb((*stack_a), &smallest_nb_value, &smallest_nb_pos, biggest_nb_value);
+		// printf("stack_a :\n");display_stack(*stack_a);
+		// printf("stack_b :\n");display_stack(stack_b);
+
+		find_smallest_nb((*stack_a), &smallest_nb_value, &smallest_nb_pos);
+		// printf("smallest_nb_value %d\n", smallest_nb_value);
+		// display_stack(*stack_a);
+
 		four_nb_sort(stack_a, &stack_b, smallest_nb_pos);
-		// printf("stack_a :\n");display_stack(stack_a);
-		three_nb_sort(stack_a, count);
+		// printf("stack_a :\n");display_stack(*stack_a);
+		three_nb_sort(stack_a);
+		// display_stack(*stack_a);
 		//push biggest nb and smallest nb
+
+		// printf("stack_b :\n");display_stack(stack_b);
+
 		get_push("pa", stack_a, &stack_b);
 		get_push("pa", stack_a, &stack_b);
 		get_rotate("ra", stack_a, &stack_b);

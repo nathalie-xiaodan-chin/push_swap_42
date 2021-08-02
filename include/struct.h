@@ -6,4 +6,6 @@ typedef struct s_node {
     struct s_node* next;
 } t_node;
 
+
+
 #endif

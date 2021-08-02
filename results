@@ -1,4 +1,0 @@
-for 1000 different tests with 5 different random values between 1 and 5:\nmax count of instructions is        5\nit was reached with this list : \n4 5 2 3 1\n
-for 1000 different tests with 5 different random values between 1 and 5:\nmax count of instructions is        2\nit was reached with this list : \n5 1 3 4 2\n
-for 1000 different tests with 5 different random values between 1 and 5:\nmax count of instructions is 0\nit was reached with this list : \n\n
-for 1000 different tests with 5 different random values between 1 and 5:\nmax count of instructions is        1\nit was reached with this list : \n3 4 5 1 2\n

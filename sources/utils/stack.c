@@ -1,5 +1,27 @@
 #include "../../include/push_swap.h"
 
+
+int 	is_stack_sorted(t_node *stack)
+{
+	t_node* tmp = (t_node*)malloc(sizeof(t_node));
+	tmp = stack;
+
+	t_node *next_node = NULL;
+	next_node = stack->next;
+
+	while (tmp != NULL && next_node != NULL)
+	{
+		if (stack->data <= next_node->data)
+			tmp = tmp->next;
+		else
+		{
+			return(0);
+		}
+	}
+	return(1);
+}
+
+
 /* Given a reference (pointer to pointer) to the head of a list
    and a position, deletes the node at the given position */
 void delete_node(t_node **head_ref, int position) //TO BE CHANGED
@@ -228,19 +250,19 @@ t_node *	build_stack(char *str, int *stack_size)
             push(ft_atoi(&str[i]), &stack_a);
             size = 1 + size;
         }
-
 		while(ft_isdigit(str[i]) || str[i] == '-' || str[i] == '+')
 			i++;
 	}
-
     reverse_stack(&stack_a);
     *stack_size = size;
 
     if (is_duplicate_in_stack(stack_a) != 0)
 	{
+
 		// pstr("is_duplicate_in_stack");
 		write(1, "Error\n", 6);
 		exit(1);
 	}
+    // display_stack(stack_a);
 	return(stack_a);
 }

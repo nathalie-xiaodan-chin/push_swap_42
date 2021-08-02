@@ -1,6 +1,14 @@
 #include "../../include/push_swap.h"
 
-
+void make_positive_number(t_node **stack_a, int min_value){
+	t_node *tmp = (*stack_a);
+	while (tmp != NULL)
+	{
+		tmp->data = tmp->data - min_value;
+		tmp = tmp->next;
+	}
+	// (*stack_a) = tmp;
+}
 
 void	radix_sort(t_node **stack_a, int n_elem)
 {
@@ -8,6 +16,12 @@ void	radix_sort(t_node **stack_a, int n_elem)
 	t_node *stack_b = NULL; //create stack b
 	init_linked_list(stack_b);
 
+	int min_value;
+	int s_pos;
+	find_smallest_nb(*stack_a, &min_value, &s_pos);
+	if (min_value < 0){
+		make_positive_number(stack_a, min_value);
+	}
 	int ith_digit = 0; //index for ith-digit
 	int ith_digit_value = 0; // value of ith-digit
 	int max_nb = (*stack_a)->data; //find the largest number
@@ -25,13 +39,14 @@ void	radix_sort(t_node **stack_a, int n_elem)
 				max_nb = node_value;
 
 			ith_digit_value = (node_value >> ith_digit) % 2;
-			if (ith_digit_value == 0) //sort even ith-digit
+			if (ith_digit_value == 1) //sort even ith-digit
 			{
-				get_push("pb", stack_a, &stack_b);
+				get_rotate("ra", stack_a, &stack_b);
 			}
 			else //sort off ith-digit
 			{
-				get_rotate("ra", stack_a, &stack_b);
+				get_push("pb", stack_a, &stack_b);
+
 			}
 
 			i_node++;
@@ -60,8 +75,8 @@ void	test_radix_sort(char *list_nb)
 	radix_sort(&stack, n_elem);
 	if (is_stack_sorted(stack) == 0)
 	{
-		display_stack(stack);
-		pstr("stack is not sorted");
+		// display_stack(stack);
+		// pstr("stack is not sorted");
 		exit(1);
 	}
 	// printf("\nsorted stack\n");display_stack(stack);

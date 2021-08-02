@@ -4,10 +4,11 @@ CC				= 	gcc
 #The Directories, Source, Includes, Objects, Binary and Resources
 
 EXECUTABLE		= 	push_swap \
-					checker \
 					test
 
 DEBUG			= 	${wildcard *.dSYM}
+
+MAIN            =   sources/main.c
 
 SRCS_UTILS		= 	${wildcard sources/utils/*.c}
 
@@ -20,7 +21,7 @@ SRCS_TEST		= 	${wildcard test_files/*.c}
 # SRCS_TEST		= 	$(filter-out $(MAIN), $(SRCS)) \
 
 OBJS_CHECKER			= 	$(SRCS_UTILS:.c=.o) $(SRCS_CHECKER:.c=.o)
-OBJS_PUSH_SWAP			= 	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o)
+OBJS_PUSH_SWAP			= 	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(MAIN:.c=.o)
 OBJS_TEST				=	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(SRCS_TEST:.c=.o)
 
 RM				= 	rm -f

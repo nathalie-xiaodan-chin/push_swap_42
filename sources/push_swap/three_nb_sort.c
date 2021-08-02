@@ -1,7 +1,18 @@
 #include "../../include/push_swap.h"
 
+void two_value_sort(t_node **stack_a, int n_elem){
+	int v1 = (*stack_a)->data;
+	int v2 = (*stack_a)->next->data;
 
-void	three_nb_sort(t_node **stack_a, int n_elem)
+	t_node *stack_b = NULL;
+	init_linked_list(stack_b);
+
+	if (v2 < v1 ){
+		get_rotate("ra", stack_a, &stack_b);
+	}
+
+}
+void	three_nb_sort(t_node **stack_a)
 {
 	int a;
 	int b;
