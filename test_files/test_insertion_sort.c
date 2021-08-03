@@ -1,90 +1,5 @@
 #include "../include/push_swap.h"
 
-
-// void	sorting_five(t_node ** stack_a, t_node ** stack_b)
-// {
-// 	int biggest_nb_value;
-// 	int biggest_nb_pos;
-// 	int smallest_nb_value;
-// 	int smallest_nb_pos;
-// 	find_biggest_nb((*stack_a), &biggest_nb_value, &biggest_nb_pos);
-// 	five_nb_sort(stack_a, stack_b, biggest_nb_pos);
-// 	find_smallest_nb((*stack_a), &smallest_nb_value, &smallest_nb_pos);
-// 	four_nb_sort(stack_a, stack_b, smallest_nb_pos);
-// 	three_nb_sort(stack_a);
-// 	get_push("pa",stack_a, stack_b);
-// 	get_push("pa", stack_a, stack_b);
-// 	get_rotate("ra", stack_a, stack_b);
-// }
-
-// int		get_last_value(t_node *stack)
-// {
-// 	while(stack->next != NULL)
-// 	{
-// 		stack = stack->next;
-// 	}
-// 	// pint(stack->data);
-// 	return(stack->data);
-// }
-
-
-// int 	compare_extremities(t_node**stack_a, t_node **stack_b)
-// {
-// 	if ((*stack_b)->data < (*stack_a)->data)
-// 	{
-// 		get_push("pa", stack_a, stack_b);
-// 		return(0);
-// 	}
-// 	else if (((*stack_b)->data > get_last_value((*stack_a))))
-// 	{
-// 		get_push("pa", stack_a, stack_b);
-// 		get_rotate("ra", stack_a, stack_b);
-// 		return(0);
-// 	}
-// 	return(0);
-// }
-
-// void	compare_middles(t_node**stack_a, t_node **stack_b)
-// {
-// 	// printf("(*stack_b)->data %d\n", (*stack_b)->data);
-// 	// printf("(*stack_a)->data %d\n", (*stack_a)->data);
-// 	int i = 0;
-// 	while ((*stack_b)->data > (*stack_a)->data)
-// 	{
-// 		i++;
-// 		get_rotate("ra", stack_a, stack_b);
-// 	}
-// 	get_push("pa", stack_a, stack_b);
-// 	while(i > 0)
-// 	{
-// 		get_reverse("rra", stack_a, stack_b);
-// 		i--;
-// 	}
-// }
-
-// void	comparing_nb(t_node **stack_a, t_node **stack_b)
-// {
-// 		if ((*stack_b)->data < (*stack_a)->data || (*stack_b)->data > get_last_value((*stack_a)))
-// 			compare_extremities(stack_a, stack_b);
-// 		else
-// 			compare_middles(stack_a, stack_b);
-// }
-
-// int	insertion_sort(t_node **stack_a, t_node **stack_b)
-// {
-// 	if ((*stack_b)->next == NULL)
-// 	{
-// 		comparing_nb(stack_a, stack_b);
-// 		return(0);
-// 	}
-// 	while((*stack_b) != NULL)
-// 	{
-// 		comparing_nb(stack_a, stack_b);
-// 	}
-// 	return(0);
-// }
-
-
 void test_find_smallest_number_above(){
 
 	int result;
@@ -107,39 +22,120 @@ void test_find_smallest_number_above(){
 		printf("line %d - result should be 2 and is now %d\n", __LINE__, result);
 		exit(1);
 	}
+
+	char * str_vals_3 = "1 3 5 7 9";
+	stack = build_stack(str_vals_3, &total);
+	result = find_smallest_nb_above_x(stack , 8,&total_node);
+	int expected_result = 4;
+	if (result != expected_result)
+	{
+		printf("line %d - result should be %d and is now %d\n", __LINE__,expected_result, result);
+		exit(1);
+	}
+
+	char * str_vals_4 = "1 3 5 7 9";
+	stack = build_stack(str_vals_4, &total);
+	result = find_smallest_nb_above_x(stack , 2,&total_node);
+	expected_result = 1;
+	if (result != expected_result)
+	{
+		printf("line %d - result should be %d and is now %d\n", __LINE__,expected_result, result);
+		exit(1);
+	}
 }
 
 void test_insertion_sort()
 {
+
+	printf("test_insertion_sort..\n\n");
 	t_node * stack_a;
 	t_node * stack_b;
 	int total_nb;
-	// stack_a = build_stack("123 2 19899 -1 8 0 3 1 19898", &total_nb);
-	// stack_a = build_stack("-163 412 189 414 300 136 -117 19 471 393 364 259 404 217 213 152 134 13 358 43 111 268 415 476 35 317 381 448 296 229 429 409 -320 231 255 119 103 427 468 176 284 -482 372 41 321 478 91 319 153 -484", &total_nb);
-	stack_a = build_stack("10 4 5 1 2 3 11", &total_nb);
-	// stack_a = build_stack("3 -2 -9 13 6 5", &total_nb);
-	t_node *tmp_a = stack_a;
-	stack_b = NULL;
-	insertion_sort(&stack_a, total_nb);
-	// if (is_stack_sorted(stack_a) == 0)
-	// {
-	// 	printf("%d stack_a is not sorted\n", __LINE__);
-	// 	exit(0);
-	// }
 
-	// printf("\nstack_a\n");display_stack(stack_a);
-	// printf("\nstack_b\n");display_stack(stack_b);
+	stack_a = build_stack("151 17 566 697 571 349", &total_nb);
+	insertion_sort(&stack_a, total_nb);
+	if (! is_stack_sorted(stack_a)){
+		printf("stack should be sorted");
+		display_stack(stack_a);
+		exit(1);
+	}
+
+	stack_a = build_stack("974 435 716 425 13 910 658 167 311 642", &total_nb);
+	insertion_sort(&stack_a, total_nb);
+	if (! is_stack_sorted(stack_a)){
+		printf("stack should be sorted");
+		display_stack(stack_a);
+		exit(1);
+	}
+
+
+
+
+
+	stack_a = build_stack("800 400 200", &total_nb);
+	insertion_sort(&stack_a, total_nb);
+
+	if(stack_a->data != 200 ||
+	   stack_a->next->data != 400 ||
+	   stack_a->next->next->data != 800
+	   ){
+	 	printf(
+			"insertion sort error: first elemts should be 200, 400, 800 and are %i %i %i\n",
+			stack_a->data,
+			stack_a->next->data,
+			stack_a->next->next->data
+		);
+		exit(1);
+	}
+
+	// t_node *tmp_a = stack_a;
+	// stack_b = NULL;
+
+	stack_a = build_stack("708 409 571 77 412 ", &total_nb);
+	insertion_sort(&stack_a, total_nb);
+
+	if(stack_a->data != 77 ||
+	   stack_a->next->data != 409 ||
+	   stack_a->next->next->data != 412 ||
+	   stack_a->next->next->next->data != 571 ||
+	   stack_a->next->next->next->next->data != 708
+
+	   ){
+	 	printf(
+			"insertion sort error: %i %i %i %i %i\n",
+			stack_a->data,
+			stack_a->next->data,
+			stack_a->next->next->data,
+			stack_a->next->next->next->data,
+			stack_a->next->next->next->next->data
+
+		);
+		exit(1);
+	}
+
+
+	// display_stack(stack_a);
+
+
 }
 
-void	test_compare_middles()
+void	test_insert_nb_in_middles()
 {
 	t_node * stack_a;
 	t_node * stack_b;
 	int total_nb;
+
 	stack_a = build_stack("1 3 5 7 9", &total_nb);
 	stack_b = build_stack("8", &total_nb);
+	insert_nb_in_middles(&stack_a, &stack_b);
 
-	compare_middles(&stack_a, &stack_b);
+
+	stack_a = build_stack("1 3 5 7 9", &total_nb);
+	stack_b = build_stack("2", &total_nb);
+	insert_nb_in_middles(&stack_a, &stack_b);
+
+
+
 	// printf("\nstack_a\n");display_stack(stack_a);
 	// printf("\nstack_b\n");display_stack(stack_b);
 }
@@ -149,7 +145,7 @@ void test_rotate_number_to_top()
 	t_node * stack_a;
 	int total_nb;
 	stack_a = build_stack("1 3 5 7 9", &total_nb);
-	rotate_number_to_top(&stack_a, 2, total_nb);
+	rotate_number_to_top(&stack_a, 2, total_nb - 1);
 	int expected_res = 5;
 	if (stack_a->data != expected_res)
 	{
@@ -160,7 +156,7 @@ void test_rotate_number_to_top()
 
 
 	stack_a = build_stack("1 3 5 7 9 10", &total_nb);
-	rotate_number_to_top(&stack_a, 4, total_nb);
+	rotate_number_to_top(&stack_a, 4, total_nb - 1);
 	expected_res = 9;
 	if (stack_a->data != expected_res)
 	{
@@ -168,15 +164,59 @@ void test_rotate_number_to_top()
 		__LINE__, stack_a->data, expected_res);
 		exit(1);
 	}
+
+
+	stack_a = build_stack("1 3 5 7 9", &total_nb);
+	// pint(total_nb);
+	rotate_number_to_top(&stack_a, 4, total_nb - 1);
+	expected_res = 9;
+	if (stack_a->data != expected_res)
+	{
+		printf("%d WRONG. It's %d and it should be %d\n",
+		__LINE__, stack_a->data, expected_res);
+		exit(1);
+	}
+
+
+}
+
+void	test_move_min_value_to_top()
+{
+	printf("test_move_min_value_to_top\n");
+	t_node * stack;
+	int total_nb;
+
+	stack = build_stack("4 5 1 2 3", &total_nb);
+	move_min_value_to_top(&stack, total_nb);
+	if (stack->data != 1){
+		printf("min value should be 1 and is %i", stack->data);
+		exit(1);
+	}
+
+	stack = build_stack("566 571 697 349", &total_nb);
+	move_min_value_to_top(&stack, total_nb);
+
+	if (stack->data != 349){
+		printf("min value should be 349 and is %i", stack->data);
+		exit(1);
+	}
+	printf("done.\n");
 }
 
 int		main()
 {
-	printf("test_insertion_sort\n");
-	// test_find_smallest_number_above();
-	// test_insertion_sort();
-	// test_compare_middles();
+	test_move_min_value_to_top();
+	test_insertion_sort();
+	test_is_sorted();
+
+	test_find_smallest_number_above();
+	test_insert_nb_in_middles();
+
 	test_rotate_number_to_top();
+
+
+	// test_sort_in_order();
+
 
 	printf("all test ok\n");
 

@@ -1,4 +1,51 @@
-// #include "../include/push_swap.h"
+#include "../include/push_swap.h"
+
+void test_is_sorted(){
+
+	printf("test_is_sorted...\n");
+	int result;
+	int expected_result;
+	int size;
+	t_node *stack;
+
+	stack = build_stack("1 2 3 4", &size);
+	result = is_stack_sorted(stack);
+	expected_result = 1;
+
+	if (result != expected_result){
+		pstr("1 2 3 4 should be sorted");
+		exit(1);
+	}
+
+	stack = build_stack("2 3 4 1", &size);
+	result = is_stack_sorted(stack);
+	expected_result = 0;
+
+	if (result != expected_result){
+		pstr("2 3 4 1 should not be sorted");
+		exit(1);
+	}
+
+	stack = build_stack("10 2 3 4", &size);
+	result = is_stack_sorted(stack);
+	expected_result = 0;
+
+	if (result != expected_result){
+		pstr("10 2 3 4 should not be sorted");
+		exit(1);
+	}
+
+	stack = build_stack("10 -3 4 8", &size);
+	result = is_stack_sorted(stack);
+	expected_result = 0;
+
+	if (result != expected_result){
+		pstr("10 -3 4 8 should not be sorted");
+		exit(1);
+	}
+
+	printf("done.\n");
+}
 
 // void	function_push_2(t_node **stack)
 // {

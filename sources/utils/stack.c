@@ -3,20 +3,15 @@
 
 int 	is_stack_sorted(t_node *stack)
 {
-	t_node* tmp = (t_node*)malloc(sizeof(t_node));
-	tmp = stack;
 
-	t_node *next_node = NULL;
-	next_node = stack->next;
+	t_node *tmp;
+    tmp = stack;
 
-	while (tmp != NULL && next_node != NULL)
+	while (tmp != NULL && tmp->next != NULL)
 	{
-		if (stack->data <= next_node->data)
-			tmp = tmp->next;
-		else
-		{
-			return(0);
-		}
+		if (tmp->next->data <= tmp->data)
+			return (0);
+		tmp = tmp->next;
 	}
 	return(1);
 }

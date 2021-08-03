@@ -15,12 +15,19 @@ void	five_or_four_nb(t_node **stack_a, int count);
 
 void	sorting_five(t_node ** stack_a, t_node ** stack_b);
 int		get_last_value(t_node *stack);
-int 	compare_extremities(t_node**stack_a, t_node **stack_b);
-void	compare_middles(t_node**stack_a, t_node **stack_b);
-void	comparing_nb(t_node **stack_a, t_node **stack_b);
 int		insertion_sort(t_node **stack_a, int total_nb);
 
 int	find_smallest_nb_above_x(t_node*stack, int x, int * total_node);
 void rotate_number_to_top(t_node **stack_a, int pos, int total_node);
+
+
+void	multiple_rotations_on_a(t_node **stack_a, char *action, int number_of_time);
+void	insert_nb_in_middles(t_node**stack_a, t_node **stack_b);
+
+int 	insert_nb_in_extremities(t_node**stack_a, t_node **stack_b, int total_nb);
+void	multiple_rotations_on_a(t_node **stack_a, char *action, int number_of_time);
+void	insert_nb_from_b_to_a(t_node **stack_a, t_node **stack_b, int *total_nb);
+
+void	move_min_value_to_top(t_node** stack, int total_node);
 
 #endif

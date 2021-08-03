@@ -13,7 +13,7 @@ void 		printReverse(t_node* head);
 int			is_stack_empty(t_node *stack);
 t_node *	build_stack(char *str, int *stack_size);
 void 		delete_node(t_node **head_ref, int position); //TO BE CHANGED
-
+void        find_biggest_and_smallest(t_node *list, int *min, int *max);
 int 	is_stack_sorted(t_node *stack);
 
 #endif

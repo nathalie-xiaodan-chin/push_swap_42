@@ -58,7 +58,6 @@ int		main(int argc, char **argv)
 	{
 		insertion_sort(&stack, total_nb);
 		// radix_sort(&stack, total_nb);
-
 	}
 	else if (total_nb > 100)
 	{

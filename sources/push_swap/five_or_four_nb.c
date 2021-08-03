@@ -20,6 +20,35 @@ int		find_pos(t_node * list, int value)
 	}
 	return(i);
 }
+void find_biggest_and_smallest(t_node *list, int *min, int *max){
+	t_node *tmp = NULL;
+
+
+	tmp = list;
+
+
+	int min_value = list->data;
+	int max_value = list->data;
+
+
+	while(tmp != NULL)
+	{
+		// pint(tmp->data);
+		if (tmp->data < min_value)
+		{
+			min_value = tmp->data;
+
+		}
+		if (tmp->data > max_value){
+			max_value = tmp->data;
+		}
+		tmp = tmp->next;
+	}
+	*min = min_value;
+	*max = max_value;
+
+}
+
 void		find_smallest_nb(t_node *list, int *s_value, int *s_pos)
 {
 	t_node *tmp = NULL;
