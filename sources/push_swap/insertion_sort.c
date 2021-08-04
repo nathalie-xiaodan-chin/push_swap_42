@@ -1,11 +1,136 @@
 #include "../../include/push_swap.h"
 
+
+void compute_number_closest_border(int i_pos, int stack_size, int* distance, int *refers_top){
+
+	if ((float)i_pos < (float)stack_size / 2)
+	{
+		*distance = i_pos;
+		*refers_top = 1;
+	}
+	else
+	{
+		*distance = stack_size - i_pos;
+		*refers_top = 0;
+	}
+
+}
+void	push_nb_of_chunk_to_b(t_node** stack_a, t_node** stack_b, int chunk_min, int chunk_max)
+{
+	int total_node = stack_len((*stack_a));
+	int chunk_nb = chunk_min;
+	t_node *tmp = (*stack_a);
+
+	float stack_divided_by_2 = (float)total_node / 2;
+
+	int i_pos = 0;
+	int does_distance_refer_top;
+	int min_distance_to_border = total_node;
+	int tmp_distance;
+	int tmp_does_distance_refer_top;
+	while (tmp != NULL)
+	{
+
+		if (tmp->data >= chunk_min && tmp->data < chunk_max) //in the range
+		{
+
+			compute_number_closest_border(
+					i_pos,
+					total_node,
+					&tmp_distance,
+					&tmp_does_distance_refer_top
+			);
+
+			if (min_distance_to_border > tmp_distance){
+
+				min_distance_to_border = tmp_distance;
+				does_distance_refer_top = tmp_does_distance_refer_top;
+			}
+		}
+		i_pos ++;
+		tmp = tmp->next;
+
+
+	}
+
+	if (min_distance_to_border == total_node){
+		return;
+	}
+
+	if (does_distance_refer_top){
+		multiple_rotations_on_a(stack_a, "ra", min_distance_to_border);
+
+	}
+	else{
+		multiple_rotations_on_a(stack_a, "rra", min_distance_to_border);
+	}
+	get_push("pb",stack_a, stack_b);
+}
+
+int	compute_chunk_interval(int smallest_nb, int biggest_nb)
+{
+	return(biggest_nb - smallest_nb);
+}
+
+void	push_chunk_numbers_to_b(t_node **stack_a, t_node **stack_b, int chunk_min, int chunk_max)
+{
+
+	while(chunk_min < chunk_max)
+	{
+		push_nb_of_chunk_to_b(stack_a, stack_b, chunk_min, chunk_max);
+
+		chunk_min++;
+	}
+
+
+}
+
+void	move_nb_to_b_by_chunk(t_node **stack_a, t_node **stack_b, int interval)
+{
+	//faire tous chunk
+
+	int i_chunk = 0;
+	int n_chunk = 5;
+	int chunk_min;
+	int chunk_max;
+
+	find_biggest_and_smallest((*stack_a), &chunk_min, &chunk_max);
+
+
+	int chunk_range = interval / 5;
+	chunk_max = chunk_min + chunk_range;
+	t_node *tmp = (*stack_a);
+	// pint(nb_in_one_chunk);
+	// pint(12);
+
+	while(i_chunk < n_chunk)
+	{
+		// printf("chunk min %d and chunk max %d\n", chunk_min, chunk_max);
+		// while (tmp != NULL)
+		// {
+			// move_chunk_numbers_to_top(stack_a,stack_b, chunk_min, chunk_max);
+			// get_push("pb",stack_a, stack_b);
+			// tmp = tmp->next;
+		// }
+
+		push_chunk_numbers_to_b(stack_a,stack_b, chunk_min, chunk_max);
+		// get_push("pb",stack_a, stack_b);
+
+		chunk_min = chunk_min + chunk_range;
+		chunk_max = chunk_max + chunk_range;
+		i_chunk++;
+	}
+	// pint(13);
+
+}
+
+
 void	move_min_value_to_top(t_node** stack, int total_node)
 {
 	int smallest_pos = 0;
 	int smallest_value = 0;
 	find_smallest_nb((*stack), &smallest_value, &smallest_pos);
-	// display_stack((*stack));
+
 	// printf("\nsmallest_value %d\nsmallest_pos %d\n\n", smallest_value, smallest_pos);
 	float stack_divided_by_2 = (float)total_node / 2;
 
@@ -166,8 +291,9 @@ void	insert_nb_from_b_to_a(t_node **stack_a, t_node **stack_b, int* total_nb)
 		if ( number_to_insert < min || number_to_insert > max )
 		{
 			// printf("number_to_insert %d\n", number_to_insert);
-
 			insert_nb_in_extremities(stack_a, stack_b, *total_nb);
+
+			// insert_nb_in_extremities(stack_a, stack_b, *total_nb);
 		}
 		else
 		{
@@ -177,6 +303,18 @@ void	insert_nb_from_b_to_a(t_node **stack_a, t_node **stack_b, int* total_nb)
 
 }
 
+void	pre_sorting_stack(t_node ** stack_a, t_node **stack_b)
+{
+	int min;
+	int max;
+
+	find_biggest_and_smallest((*stack_a), &min, &max);
+
+	int chunk_interval = compute_chunk_interval(min, max);
+
+	move_nb_to_b_by_chunk(stack_a, stack_b, chunk_interval);
+
+}
 
 int	insertion_sort(t_node **stack_a, int total_nb)
 {
@@ -184,29 +322,21 @@ int	insertion_sort(t_node **stack_a, int total_nb)
 	t_node *tmp_a = (*stack_a);
 	stack_b = NULL;
 	int i = total_nb;
-	while (i != 1)
-	{
-		get_push("pb",stack_a, &stack_b);
-		i--;
 
-	}
-	total_nb = i;
-	//sorting_five(stack_a, &stack_b);
-	// printf("\nstack_a\n");display_stack((*stack_a));
-	// printf("\nstack_b\n");display_stack(stack_b);
-	// exit(0);
+	pre_sorting_stack(stack_a, &stack_b);
+	total_nb = stack_len(*stack_a);
+	// printf("\nIn insertion sort:\n");display_stack(*stack_a);pint(total_nb);
+
 
 	while(stack_b != NULL)
 	{
 		insert_nb_from_b_to_a(stack_a, &stack_b, &total_nb);
-		//printf("\nstack_a\n");display_stack((*stack_a));
-		//printf("\nstack_b\n");display_stack(stack_b);
 	}
 
+	total_nb = stack_len(*stack_a);
 	move_min_value_to_top(stack_a, total_nb);
 
-	// printf("\nstack_a\n");display_stack((*stack_a));
-	// printf("\nstack_b\n");display_stack(stack_b);
+
 	return(0);
 }
 

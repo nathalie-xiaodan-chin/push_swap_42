@@ -52,10 +52,19 @@ void test_insertion_sort()
 	t_node * stack_b;
 	int total_nb;
 
+
+	stack_a = build_stack("744 419 98 403 858 961 769 228 747 421 35 375 409 787 865 836 76 853 296 428 131 630 269 912 652 727 825 947 482 150 795 20 986 887 581 543 474 64 936 884", &total_nb);
+	insertion_sort(&stack_a, total_nb);
+	if (! is_stack_sorted(stack_a)){
+		printf("line %d stack should be sorted\n", __LINE__);
+		display_stack(stack_a);
+		exit(1);
+	}
+
 	stack_a = build_stack("151 17 566 697 571 349", &total_nb);
 	insertion_sort(&stack_a, total_nb);
 	if (! is_stack_sorted(stack_a)){
-		printf("stack should be sorted");
+		printf("line %d stack should be sorted\n", __LINE__);
 		display_stack(stack_a);
 		exit(1);
 	}
@@ -63,7 +72,7 @@ void test_insertion_sort()
 	stack_a = build_stack("974 435 716 425 13 910 658 167 311 642", &total_nb);
 	insertion_sort(&stack_a, total_nb);
 	if (! is_stack_sorted(stack_a)){
-		printf("stack should be sorted");
+		printf("line %d stack should be sorted\n", __LINE__);
 		display_stack(stack_a);
 		exit(1);
 	}
@@ -203,26 +212,157 @@ void	test_move_min_value_to_top()
 	printf("done.\n");
 }
 
+void	test_compute_chunk_interval()
+{
+	pstr("test_compute_chunk_interval");
+	t_node * stack;
+	int total_nb;
+	stack = build_stack("-5000 10000 2 5934 89 3 1", &total_nb);
+	int min = 0;
+	int max = 0;
+	find_biggest_and_smallest(stack, &min, &max);
+
+	int res = compute_chunk_interval(min, max);
+	int expected_res = 15000;
+	if (res != expected_res)
+	{
+		printf("%d TRY AGAIN. It's %d and should be %d\n", __LINE__, res, expected_res);
+		exit(1);
+	}
+
+
+	stack = build_stack("-1100 -3 -5 -13432 -19340 -2", &total_nb);
+	find_biggest_and_smallest(stack, &min, &max);
+	res = compute_chunk_interval(min, max);
+
+	expected_res = 19338;
+	if (res != expected_res)
+	{
+		printf("%d TRY AGAIN. It's %d and should be %d\n", __LINE__, res, expected_res);
+		exit(1);
+	}
+}
+
+	void	test_move_nb_to_b_by_chunk()
+	{
+		t_node * stack_a;
+		t_node * stack_b;
+		int total_nb;
+		int interval;
+		int smallest_nb;
+		int biggest_nb;
+
+		// stack_a = build_stack("-5000 10000 2 5934 89 3 1", &total_nb);
+		stack_a = build_stack("0 2000 1 2 3 4 5", &total_nb);
+		find_biggest_and_smallest(stack_a, &smallest_nb, &biggest_nb);
+		interval = compute_chunk_interval(smallest_nb, biggest_nb);
+		move_nb_to_b_by_chunk(&stack_a, &stack_b, interval);
+
+		// printf("\nstack_a:\n");display_stack(stack_a);
+		// printf("stack_b:\n");display_stack(stack_b);
+	}
+
+void	test_stack_len()
+{
+	t_node * stack;
+	int total_nb;
+	stack = build_stack("-5000 10000 2 5934 89 3 1", &total_nb);
+	int res = stack_len(stack);
+	int expected_res = 7;
+	if (res != expected_res)
+	{
+		printf("%d TRY AGAIN. It's %d and should be %d\n", __LINE__, res, expected_res);
+		exit(1);
+	}
+
+	stack = build_stack("-5000", &total_nb);
+	res = stack_len(stack);
+	expected_res = 1;
+	if (res != expected_res)
+	{
+		printf("%d TRY AGAIN. It's %d and should be %d\n", __LINE__, res, expected_res);
+		exit(1);
+	}
+
+	stack = build_stack("-5000 1", &total_nb);
+	res = stack_len(stack);
+	expected_res = 2;
+	if (res != expected_res)
+	{
+		printf("%d TRY AGAIN. It's %d and should be %d\n", __LINE__, res, expected_res);
+		exit(1);
+	}
+}
+
+void	test_pre_sorting_stack()
+{
+	printf("test_insertion_sort..\n\n");
+	t_node * stack_a;
+	t_node * stack_b = NULL;
+	int total_nb;
+
+	stack_a = build_stack("151 17 1 2 3 4 18 566 697 571 349 1000 100000", &total_nb);
+
+	pre_sorting_stack(&stack_a, &stack_b);
+
+	printf("\nstack_a:\n");display_stack(stack_a);
+	printf("stack_b:\n");display_stack(stack_b);
+}
+
+void	test_move_nb_of_chunk_to_top()
+{
+	t_node * stack;
+	int total_nb;
+	stack = build_stack("151 17 55 1 3 99", &total_nb);
+	//to fix and and stack b
+	// move_nb_of_chunk_to_top(&stack, 1, 5);
+	int expected_res = 3;
+	if (stack->data != expected_res)
+	{
+		printf("%d TRY AGAIN. It's %d and should be %d\n",
+				__LINE__, stack->data, expected_res);
+		exit(1);
+	}
+
+	stack = build_stack("151 17 1 2 3 777 888 88 99", &total_nb);
+	// move_nb_of_chunk_to_top(&stack, 1, 5);
+	expected_res = 1;
+	if (stack->data != expected_res)
+	{
+		printf("%d TRY AGAIN. It's %d and should be %d\n", __LINE__, stack->data, expected_res);
+		exit(1);
+	}
+
+	stack = build_stack("151 17 777 888 88 99", &total_nb);
+	// move_nb_of_chunk_to_top(&stack, 1, 5);
+	expected_res = 151;
+	if (stack->data != expected_res)
+	{
+		printf("%d TRY AGAIN. It's %d and should be %d\n", __LINE__, stack->data, expected_res);
+		exit(1);
+	}
+}
+
+
 int		main()
 {
-	test_move_min_value_to_top();
+	// test_move_min_value_to_top();
 	test_insertion_sort();
-	test_is_sorted();
 
-	test_find_smallest_number_above();
-	test_insert_nb_in_middles();
+	// test_find_smallest_number_above();
+	// test_insert_nb_in_middles();
 
-	test_rotate_number_to_top();
+	// test_rotate_number_to_top();
 
+	// test_compute_chunk_interval();
+	// test_move_nb_to_b_by_chunk();
 
-	// test_sort_in_order();
+	// test_stack_len();
 
+	// test_pre_sorting_stack();
+
+	//test_move_nb_of_chunk_to_top();
 
 	printf("all test ok\n");
-
-
-
-
-
 
 }

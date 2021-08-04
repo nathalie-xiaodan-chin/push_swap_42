@@ -30,4 +30,9 @@ void	insert_nb_from_b_to_a(t_node **stack_a, t_node **stack_b, int *total_nb);
 
 void	move_min_value_to_top(t_node** stack, int total_node);
 
+int	compute_chunk_interval(int smallest_nb, int biggest_nb);
+void	move_nb_to_b_by_chunk(t_node **stack_a, t_node **stack_b, int interval);
+void	push_chunk_numbers_to_b(t_node **stack_a, t_node **stack_b, int chunk_min, int chunk_max);
+void	pre_sorting_stack(t_node ** stack_a, t_node **stack_b);
+
 #endif

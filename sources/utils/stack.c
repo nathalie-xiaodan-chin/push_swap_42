@@ -1,6 +1,19 @@
 #include "../../include/push_swap.h"
 
 
+int	stack_len(t_node* stack)
+{
+	int i = 0;
+    if (stack->next == NULL)
+        return(1);
+	while (stack != NULL)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return(i);
+}
+
 int 	is_stack_sorted(t_node *stack)
 {
 
@@ -136,7 +149,10 @@ void display_stack(t_node* head)
     t_node *current;
     current = head;
     if (current == NULL)
+    {
         printf("The Stack is empty\n");
+        exit(1);
+    }
     while (current != NULL)
     {
             printf("stack : %d\n",current->data);
@@ -162,7 +178,7 @@ int		is_stack_empty(t_node *stack)
 {
 	if (stack == NULL)
 	{
-		// pstr("stack is empty");
+
 		return(1);
 	}
 	return(0);
@@ -179,7 +195,7 @@ t_node *	build_stack(char *str, int *stack_size)
 
     if (is_empty(str) != 0)
 	{
-        // pstr("empty");
+
 		write(1, "Error\n", 6);
 		exit(1);
 	}
@@ -191,7 +207,7 @@ t_node *	build_stack(char *str, int *stack_size)
 	{
 		if (!ft_isdigit(str[i]) && !is_invisible_char(str[i]) && str[i] != '-' && str[i] != '+')
         {
-			// pstr("not a digit and not a space");
+
             write(1, "Error\n", 6);
             exit(1);
         }
@@ -203,13 +219,13 @@ t_node *	build_stack(char *str, int *stack_size)
 	{
 		if (!ft_isdigit(str[i + 1]) && str[i] == '-')
         {
-			// pstr("not a negatif nb");
+
             write(1, "Error\n", 6);
             exit(1);
         }
         else if (!ft_isdigit(str[i + 1]) && str[i] == '+')
         {
-			// pstr("not a positif  nb");
+
             write(1, "Error\n", 6);
             exit(1);
         }
