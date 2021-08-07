@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:54:08 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/05 11:09:12 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/07 18:58:23 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,6 @@ void	five_nb_sort(t_node **stack_a, t_node**stack_b, int i)
 void	five_or_four_nb_sort(t_node **stack_a, int count)
 {
 	t_node	*stack_b;
-	int		smallest_nb_value;
-	int		smallest_nb_pos;
-	int		biggest_nb_value;
-	int		biggest_nb_pos;
 
 	stack_b = NULL;
 	if (count == 4)

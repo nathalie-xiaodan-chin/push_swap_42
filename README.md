@@ -23,6 +23,10 @@ nb negatif ????
 - reminder on pointer and why to use double pointer for a linked list : https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/
 
 **compil**
+ARG="5 1 3 4 2 12" && make push_swap && make checker && ./push_swap $ARG | ./checker $ARG
+
+make push_swap && make checker && ./push_swap "5 1 3 4 2 12" | ./checker "5 1 3 4 2 12"
+
 ARG="5 1 3 4 2" && make push_swap  && ./push_swap $ARG | ./checker_Mac $ARG
 
 ARG="1" && make push_swap  && ./push_swap $ARG | ./checker_Mac $ARG

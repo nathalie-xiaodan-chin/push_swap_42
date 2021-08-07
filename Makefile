@@ -4,6 +4,7 @@ CC				= 	gcc
 #The Directories, Source, Includes, Objects, Binary and Resources
 
 EXECUTABLE		= 	push_swap \
+					checker \
 					test
 
 DEBUG			= 	${wildcard *.dSYM}
@@ -20,15 +21,14 @@ SRCS_TEST		= 	${wildcard test_files/*.c}
 
 # SRCS_TEST		= 	$(filter-out $(MAIN), $(SRCS)) \
 
-OBJS_CHECKER			= 	$(SRCS_UTILS:.c=.o) $(SRCS_CHECKER:.c=.o)
+OBJS_CHECKER			= 	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(SRCS_CHECKER:.c=.o)
 OBJS_PUSH_SWAP			= 	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(MAIN:.c=.o)
 OBJS_TEST				=	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(SRCS_TEST:.c=.o)
 
 RM				= 	rm -f
 
 #Flags, Libraries and Includes
-CFLAGS			= 	-g
-# LIB_MLX			= 	-I /usr/X11/include -g -L /usr/X11/lib -lX11 -lmlx -lXext
+CFLAGS			= 	-Wall -Wextra -Werror -g
 LIBFT			= 	libft/libft.a
 GNL				= 	get_next_line/get_next_line.c
 # CFLAGS			= -Wall -Wextra -Werror -I

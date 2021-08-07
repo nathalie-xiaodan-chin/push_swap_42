@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 15:13:21 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 10:14:08 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/07 18:58:54 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	checking_all_nodes(t_sorting_toolbox *a, t_node **s_a, t_node **s_b);
 void	sorting_four(t_node **stack_a, t_node **stack_b);
 int		is_stack_sorted(t_node *stack);
-void	two_nb_sort(t_node **stack_a, int n_elem);
+void	two_nb_sort(t_node **stack_a);
 void	three_nb_sort(t_node **stack_a);
 void	radix_sort(t_node **stack_a, int count);
 int		find_pos(t_node *list, int value);

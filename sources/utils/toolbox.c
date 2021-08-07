@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 17:16:54 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/06 17:29:37 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/07 17:09:07 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,74 +67,74 @@ int	is_invisible_str(char *str)
  * DEBUG TOOLS
  *
 */
-// int	ft_check_sep(char c, char *sep)
-// {
-// 	int	i;
+int	ft_check_sep(char c, char *sep)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (sep[i])
-// 	{
-// 		if (c == sep[i])
-// 			return (1);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	i = 0;
+	while (sep[i])
+	{
+		if (c == sep[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
-// void	ff(void)
-// {
-// 	fflush(stdout);
-// }
+void	ff(void)
+{
+	fflush(stdout);
+}
 
-// void	pint(int integer)
-// {
-// 	printf("int |%d|\n", integer);
-// 	fflush(stdout);
-// }
+void	pint(int integer)
+{
+	printf("int |%d|\n", integer);
+	fflush(stdout);
+}
 
-// void	pstr(char *str)
-// {
-// 	printf("str |%s|\n", str);
-// 	fflush(stdout);
-// }
+void	pstr(char *str)
+{
+	printf("str |%s|\n", str);
+	fflush(stdout);
+}
 
-// void	pchar(char c)
-// {
-// 	printf("c |%c|\n", c);
-// 	fflush(stdout);
-// }
+void	pchar(char c)
+{
+	printf("c |%c|\n", c);
+	fflush(stdout);
+}
 
-// void	pfloat(float c)
-// {
-// 	printf("float |%f|\n", c);
-// 	fflush(stdout);
-// }
+void	pfloat(float c)
+{
+	printf("float |%f|\n", c);
+	fflush(stdout);
+}
 
-// void	display_stack(t_node *head)
-// {
-// 	t_node	*current;
+void	display_stack(t_node *head)
+{
+	t_node	*current;
 
-// 	current = head;
-// 	if (current == NULL)
-// 	{
-// 		printf("stack is empty\n");
-// 		exit(1);
-// 	}
-// 	while (current != NULL)
-// 	{
-// 		printf("stack : %d\n", current->data);
-// 		current = current->next;
-// 	}
-// }
+	current = head;
+	if (current == NULL)
+	{
+		printf("stack is empty\n");
+		exit(1);
+	}
+	while (current != NULL)
+	{
+		printf("stack : %d\n", current->data);
+		current = current->next;
+	}
+}
 
-// void	display_head(t_node *stack)
-// {
-// 	if (stack != NULL)
-// 	{
-// 		printf("element on top: %d\n", stack->data);
-// 	}
-// 	else
-// 	{
-// 		printf("stack is empty.\n");
-// 	}
-// }
+void	display_head(t_node *stack)
+{
+	if (stack != NULL)
+	{
+		printf("element on top: %d\n", stack->data);
+	}
+	else
+	{
+		printf("stack is empty.\n");
+	}
+}

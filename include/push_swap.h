@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 15:15:52 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/06 15:13:24 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/07 19:42:35 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@
 # include <unistd.h>
 # include "toolbox.h"
 # include "stack.h"
-# include "checker.h"
+// # include "checker.h"
 # include "struct.h"
 # include "actions.h"
 # include "sort.h"
 # include "error.h"
+# include "checker.h"
+# include "free.h"
 # include "../libft/libft.h"
+# include "../get_next_line/get_next_line.h"
 # define RED "\033[1;31m"
 # define BLACK "\033[1;30m"
 # define GREEN "\033[1;32m"

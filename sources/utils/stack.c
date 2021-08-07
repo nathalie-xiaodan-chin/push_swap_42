@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 13:47:02 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/06 17:42:13 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/07 19:49:29 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,10 @@ t_node	*build_stack(char *str, int *stack_size)
 	reverse_stack(&stack_a);
 	*stack_size = a.size;
 	if (is_duplicate_in_stack(stack_a) != 0)
+	{
+		// free_stack(stack_a);
 		error_and_exit();
+	}
+
 	return (stack_a);
 }

@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:10:28 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/06 16:42:20 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/07 23:36:53 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ int	is_sorting_needed(t_node **stack, int total_nb)
 	if (total_nb == 1)
 		return (0);
 	else if (total_nb == 2)
-		two_nb_sort(stack, total_nb);
+		two_nb_sort(stack);
 	else if (total_nb == 3)
 		three_nb_sort(stack);
 	else if (total_nb <= 5)
 		five_or_four_nb_sort(stack, total_nb);
 	else if (total_nb <= 100)
+	{
 		insertion_sort(stack, total_nb);
+	}
 	else if (total_nb > 100)
 		radix_sort(stack, total_nb);
 	else
@@ -64,5 +66,8 @@ int	main(int argc, char **argv)
 	}
 	if (is_sorting_needed(&stack, total_nb))
 		return (0);
+
+	free_stack(stack);
+
 	return (0);
 }
