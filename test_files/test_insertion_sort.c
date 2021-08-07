@@ -53,7 +53,17 @@ void test_insertion_sort()
 	int total_nb;
 
 
-	stack_a = build_stack("744 419 98 403 858 961 769 228 747 421 35 375 409 787 865 836 76 853 296 428 131 630 269 912 652 727 825 947 482 150 795 20 986 887 581 543 474 64 936 884", &total_nb);
+	stack_a = build_stack("995 101 613 738 994 495 37 749  ", &total_nb);
+	insertion_sort(&stack_a, total_nb);
+		display_stack(stack_a);
+
+	if (! is_stack_sorted(stack_a)){
+		printf("line %d stack should be sorted\n", __LINE__);
+		display_stack(stack_a);
+		exit(1);
+	}
+
+	stack_a = build_stack("928 230 327 394 112 466 76 554 370 745 73 284 231 959 996 412 261 515 524 201 ", &total_nb);
 	insertion_sort(&stack_a, total_nb);
 	if (! is_stack_sorted(stack_a)){
 		printf("line %d stack should be sorted\n", __LINE__);

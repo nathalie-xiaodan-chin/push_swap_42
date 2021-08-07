@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toolbox.h                                          :+:      :+:    :+:   */
+/*   action_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 15:34:02 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/06 17:28:44 by nachin           ###   ########.fr       */
+/*   Created: 2021/08/05 13:16:33 by nachin            #+#    #+#             */
+/*   Updated: 2021/08/05 13:22:27 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOOLBOX_H
-# define TOOLBOX_H
-# include "struct.h"
+#include "../../include/push_swap.h"
 
-int			is_invisible_char(char c);
-long long	long_long_atoi(const char *str);
-int			ft_check_sep(char c, char *sep);
-void		ff(void);
-void		pint(int integer);
-void		pstr(char *str);
-void		pchar(char c);
-void		pfloat(float c);
+void	get_sa_and_rra(t_node **stack_a, t_node **stack_b)
+{
+	get_swap("sa", stack_a, stack_b);
+	get_reverse("rra", stack_a, stack_b);
+}
 
-#endif
+void	get_sa_and_ra(t_node **stack_a, t_node **stack_b)
+{
+	get_swap("sa", stack_a, stack_b);
+	get_rotate("ra", stack_a, stack_b);
+}

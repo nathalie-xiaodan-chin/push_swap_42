@@ -1,7 +1,17 @@
-#ifndef PUSHSWAP_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 15:15:52 by nachin            #+#    #+#             */
+/*   Updated: 2021/08/06 15:13:24 by nachin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# define PUSHSWAP_H
-
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
@@ -13,9 +23,7 @@
 # include "actions.h"
 # include "sort.h"
 # include "error.h"
-
 # include "../libft/libft.h"
-
 # define RED "\033[1;31m"
 # define BLACK "\033[1;30m"
 # define GREEN "\033[1;32m"
@@ -25,11 +33,4 @@
 # define CYAN "\033[1;36m"
 # define WHITE "\033[1;37m"
 # define NO_COLOR "\033[0m"
-
-// void	test_radix_sort(char *list_nb);
-int 	is_stack_sorted(t_node *stack);
-// void	three_nb_sort(t_node **stack_a, int n_elem);
-// void	radix_sort(t_node **stack_a, int n_elem);
-
-
 #endif

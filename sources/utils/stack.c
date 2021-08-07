@@ -1,279 +1,106 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:47:02 by nachin            #+#    #+#             */
+/*   Updated: 2021/08/06 17:42:13 by nachin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/push_swap.h"
 
-
-int	stack_len(t_node* stack)
+void	init_struct_stack_toolbox(t_stack_toolbox *init)
 {
-	int i = 0;
-    if (stack->next == NULL)
-        return(1);
-	while (stack != NULL)
+	init->i = 0;
+	init->size = 0;
+	init->nb = 0;
+}
+
+void	reverse_stack(t_node **tmp)
+{
+	t_node	*prev_ptr;
+	t_node	*current;
+	t_node	*next;
+
+	prev_ptr = NULL;
+	current = *tmp;
+	next = NULL;
+	while (current != NULL)
 	{
-		i++;
-		stack = stack->next;
+		next = current->next;
+		current->next = prev_ptr;
+		prev_ptr = current;
+		current = next;
 	}
-	return(i);
+	*tmp = prev_ptr;
 }
 
-int 	is_stack_sorted(t_node *stack)
+void	check_errors_in_str(t_stack_toolbox *a, char *str)
 {
-
-	t_node *tmp;
-    tmp = stack;
-
-	while (tmp != NULL && tmp->next != NULL)
+	if (is_empty(str) != 0)
+		error_and_exit();
+	if (is_invisible_str(&str[a->i]) == 1)
+		error_and_exit();
+	while (str[a->i] != '\0')
 	{
-		if (tmp->next->data <= tmp->data)
-			return (0);
-		tmp = tmp->next;
+		if (!ft_isdigit(str[a->i]) && !is_invisible_char(str[a->i]) && \
+			str[a->i] != '-' && str[a->i] != '+')
+			error_and_exit();
+		a->i++;
 	}
-	return(1);
-}
-
-
-/* Given a reference (pointer to pointer) to the head of a list
-   and a position, deletes the node at the given position */
-void delete_node(t_node **head_ref, int position) //TO BE CHANGED
-{
-   // If linked list is empty
-   if (*head_ref == NULL)
-      return;
-
-   // Store head node
-   t_node * temp = *head_ref;
-
-    // If head needs to be removed
-    if (position == 0)
-    {
-        *head_ref = temp->next;   // Change head
-        free(temp);               // free old head
-        return;
-    }
-
-    // Find previous node of the node to be deleted
-    for (int i=0; temp!=NULL && i<position-1; i++)
-         temp = temp->next;
-
-    // If position is more than number of nodes
-    if (temp == NULL || temp->next == NULL)
-         return;
-
-    // Node temp->next is the node to be deleted
-    // Store pointer to the next of node to be deleted
-    t_node *next = temp->next->next;
-
-    // Unlink the node from linked list
-    free(temp->next);  // Free memory
-
-    temp->next = next;  // Unlink the deleted node from list
-}
-
-/**
- * initialization of a linked list
-*/
-t_node* init_linked_list(t_node* head)
-{
-    head = NULL;
-    return(head);
-}
-
-/**
- * reverse the element of a stack
-*/
-
-void reverse_stack(t_node **tmp)
-{
-    t_node* prev_ptr = NULL;
-    t_node* current = *tmp;
-    t_node* next = NULL;
-    while (current != NULL) {
-        // Store next
-        next = current->next;
-
-        // Reverse current node's pointer
-        current->next = prev_ptr;
-
-        // Move pointers one position ahead.
-        prev_ptr = current;
-        current = next;
-    }
-    *tmp = prev_ptr;
-}
-
-/**
- * push an element into stack
-*/
-
-// t_node* push(int data, t_node* stack)
-// {
-//     t_node* new_head = (t_node*)malloc(sizeof(t_node));
-//     new_head->data = data;
-//     new_head->next = stack;
-//     stack = new_head;
-//     // free(new_head);
-//     // new_head == NULL;
-//     return(stack);
-// }
-
-void push(int data, t_node** stack)
-{
-    t_node* new_head = (t_node*)malloc(sizeof(t_node));
-    new_head->data = data;
-    new_head->next = (*stack);
-    (*stack) = new_head;
-    // free(new_head);
-    // new_head == NULL;
-}
-
-/**
- * remove element from the top of the stack
-*/
-void pop(t_node **stack)
-{
-    if((*stack) != NULL){
-        // printf("Element popped: %d\n",(*stack)->data);
-        t_node* tmp = (*stack);
-        (*stack) = (*stack)->next;
-        // free(tmp);
-    }
-    // else
-    // {
-    //     printf("The stack is empty.\n");
-    // }
-}
-
-/**
- * display the whole stack
-*/
-void display_stack(t_node* head)
-{
-    t_node *current;
-    current = head;
-    if (current == NULL)
-    {
-        printf("The Stack is empty\n");
-        exit(1);
-    }
-    while (current != NULL)
-    {
-            printf("stack : %d\n",current->data);
-            current = current->next;
-    }
-}
-
-/**
- * display the element at the top of the stack
-*/
-void display_head(t_node* stack)
-{
-    if(stack != NULL)
-    {
-    printf("Element on top: %d\n", stack->data);
-    }
-    else{
-        printf("The stack is empty.\n");
-    }
-}
-
-int		is_stack_empty(t_node *stack)
-{
-	if (stack == NULL)
+	a->i = 0;
+	while (str[a->i] != '\0')
 	{
-
-		return(1);
+		if (!ft_isdigit(str[a->i + 1]) && str[a->i] == '-')
+			error_and_exit();
+		else if (!ft_isdigit(str[a->i + 1]) && str[a->i] == '+')
+			error_and_exit();
+		a->i++;
 	}
-	return(0);
 }
 
-t_node *	build_stack(char *str, int *stack_size)
+void	pushing_nb_in_stack(t_stack_toolbox *a, char *str, t_node **stack_a)
 {
-	t_node *stack_a = NULL;
-	init_linked_list(stack_a);
-	int i;
-	i = 0;
-    int size = 0;
-    long long nb = 0;
-
-    if (is_empty(str) != 0)
+	a->i = 0;
+	while (str[a->i] != '\0')
 	{
-
-		write(1, "Error\n", 6);
-		exit(1);
-	}
-
-    if (is_invisible_str(&str[i]) == 1)
-        return(0);
-
-    while (str[i] != '\0')
-	{
-		if (!ft_isdigit(str[i]) && !is_invisible_char(str[i]) && str[i] != '-' && str[i] != '+')
-        {
-
-            write(1, "Error\n", 6);
-            exit(1);
-        }
-		i++;
-	}
-
-    i = 0;
-    while (str[i] != '\0')
-	{
-		if (!ft_isdigit(str[i + 1]) && str[i] == '-')
-        {
-
-            write(1, "Error\n", 6);
-            exit(1);
-        }
-        else if (!ft_isdigit(str[i + 1]) && str[i] == '+')
-        {
-
-            write(1, "Error\n", 6);
-            exit(1);
-        }
-		i++;
-	}
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		while(is_invisible_char(str[i]))
-			i++;
-
-        //treat the zero manually because of atoi return value
-        if (str[i] == '0')
-        {
-		    push(0, &stack_a);
-            size = 1 + size;
-            // i++;
-        }
-        while(is_invisible_char(str[i]))
-			i++;
-        //now atoi will return 0 only if there is an error
-        if (ft_atoi(&str[i]) != 0)
+		while (is_invisible_char(str[a->i]))
+			a->i++;
+		if (str[a->i] == '0')
 		{
-            nb = long_long_atoi(&str[i]); //check max int
-            // printf("%lu \n", nb);
-            if (nb > 2147483647 || nb < -2147483648)
-            {
-                // pstr("int max");
-                write(1, "Error\n", 6);
-                exit(1);
-            }
-            push(ft_atoi(&str[i]), &stack_a);
-            size = 1 + size;
-        }
-		while(ft_isdigit(str[i]) || str[i] == '-' || str[i] == '+')
-			i++;
+			push(0, stack_a);
+			a->size = 1 + a->size;
+		}
+		while (is_invisible_char(str[a->i]))
+			a->i++;
+		if (ft_atoi(&str[a->i]) != 0)
+		{
+			a->nb = long_long_atoi(&str[a->i]);
+			if (a->nb > 2147483647 || a->nb < -2147483648)
+				error_and_exit();
+			push(ft_atoi(&str[a->i]), stack_a);
+			a->size = 1 + a->size;
+		}
+		while (ft_isdigit(str[a->i]) || str[a->i] == '-' || str[a->i] == '+')
+			a->i++;
 	}
-    reverse_stack(&stack_a);
-    *stack_size = size;
+}
 
-    if (is_duplicate_in_stack(stack_a) != 0)
-	{
+t_node	*build_stack(char *str, int *stack_size)
+{
+	t_node			*stack_a;
+	t_stack_toolbox	a;
 
-		// pstr("is_duplicate_in_stack");
-		write(1, "Error\n", 6);
-		exit(1);
-	}
-    // display_stack(stack_a);
-	return(stack_a);
+	stack_a = NULL;
+	init_struct_stack_toolbox(&a);
+	check_errors_in_str(&a, str);
+	pushing_nb_in_stack(&a, str, &stack_a);
+	reverse_stack(&stack_a);
+	*stack_size = a.size;
+	if (is_duplicate_in_stack(stack_a) != 0)
+		error_and_exit();
+	return (stack_a);
 }

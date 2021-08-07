@@ -1,18 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   toolbox.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/06 17:16:54 by nachin            #+#    #+#             */
+/*   Updated: 2021/08/06 17:29:37 by nachin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/push_swap.h"
-
-
 
 long long	long_long_atoi(const char *str)
 {
-	int i;
-	int neg;
-	long long result;
+	int			i;
+	int			neg;
+	long long	result;
 
 	i = 0;
 	neg = 0;
 	result = 0;
-	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\t'
-	|| str[i] == '\n' || str[i] == '\r' || str[i] == '\v')
+	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\t' \
+			|| str[i] == '\n' || str[i] == '\r' || str[i] == '\v')
 		i++;
 	if (str[i] == '-')
 	{
@@ -31,177 +41,100 @@ long long	long_long_atoi(const char *str)
 		return (result);
 }
 
-
-int is_invisible_char(char c)
+int	is_invisible_char(char c)
 {
-    if (c == ' ' || c == '\t' || c == '\v'|| c == '\r')
-        return (1);
-    return (0);
+	if (c == ' ' || c == '\t' || c == '\v' || c == '\r')
+		return (1);
+	return (0);
 }
 
-int is_invisible_str(char *str)
+int	is_invisible_str(char *str)
 {
-    int i = 0;
-    while (str[i] != '\0')
-    {
-        if (is_invisible_char(str[i]) == 1)
-            i++;
-        else
-            return (0);
-    }
-    return (1);
-}
+	int	i;
 
-int   count_char_in_2d_array(int height, char **double_array)
-{
-    int i = 0;
-    int total_count = 0;
-    while(i < height)
-    {
-
-        total_count += ft_strlen(double_array[i]);
-        i++;
-    }
-    return(total_count);
-}
-char**     allocate_2d_array(int size_width, int size_height)
-{
-    char** double_array = NULL;
-    int i = 0;
-    //Allocate memory for row
-    double_array = (char**)malloc(size_height * sizeof(char*));
-    //Allocate memory for column
-    while (i < size_height)
-    {
-        double_array[i] = (char*)malloc(size_width * sizeof(char));
-        i++;
-    }
-    return (double_array);
-}
-
-char **    fill_double_array(int width,int height, char **double_array, char content)
-{
-    int i = 0;
-    int j = 0;
-    while (i < height)
-    {
-        j = 0;
-        while (j < width)
-        {
-            double_array[i][j] = content;
-            j++;
-        }
-        double_array[i][j] = '\0';
-        i++;
-    }
-    return (double_array);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (is_invisible_char(str[i]) == 1)
+			i++;
+		else
+			return (0);
+	}
+	return (1);
 }
 
 /**
- * DEBUG TOOLS - BEGIN
+ * DEBUG TOOLS
+ *
 */
+// int	ft_check_sep(char c, char *sep)
+// {
+// 	int	i;
 
-void    print_double_array_rectangle(int height_size, char **double_array)
-{
-    int i = 0;
-    int j = 0;
-    while(i < height_size)
-    {
+// 	i = 0;
+// 	while (sep[i])
+// 	{
+// 		if (c == sep[i])
+// 			return (1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
-         printf("%s\n", double_array[i]);
+// void	ff(void)
+// {
+// 	fflush(stdout);
+// }
 
-        i++;
-    }
+// void	pint(int integer)
+// {
+// 	printf("int |%d|\n", integer);
+// 	fflush(stdout);
+// }
 
-}
+// void	pstr(char *str)
+// {
+// 	printf("str |%s|\n", str);
+// 	fflush(stdout);
+// }
 
-void    print_double_array_square(int size, char **double_array)
-{
-    int i = 0;
-    int j = 0;
-    while(i < size)
-    {
-        j = 0;
-        while(j < size)
-        {
-            printf("%c ", double_array[i][j]);
-            j++;
-        }
-        printf("\n");
-        i++;
-    }
-}
+// void	pchar(char c)
+// {
+// 	printf("c |%c|\n", c);
+// 	fflush(stdout);
+// }
 
-//used to print 2d array
-int        ft_check_sep(char c, char* sep)
-{
-    int i;
+// void	pfloat(float c)
+// {
+// 	printf("float |%f|\n", c);
+// 	fflush(stdout);
+// }
 
-    i = 0;
-    while (sep[i])
-    {
-        if (c == sep[i])
-            return (1);
-        i++;
-    }
-    return (0);
-}
+// void	display_stack(t_node *head)
+// {
+// 	t_node	*current;
 
-//used to print 2d array
-int        ft_count_words(char *str, char *charset)
-{
-    int i;
-    int count;
+// 	current = head;
+// 	if (current == NULL)
+// 	{
+// 		printf("stack is empty\n");
+// 		exit(1);
+// 	}
+// 	while (current != NULL)
+// 	{
+// 		printf("stack : %d\n", current->data);
+// 		current = current->next;
+// 	}
+// }
 
-    count = 0;
-    i = 0;
-    while (str[i] != '\0')
-    {
-        while (str[i] != '\0' && (ft_check_sep(str[i], charset) == 1)) // si c'est un charset
-        {
-            if (str[i + 1] == '\0') // si le prochain char est un '\0'
-                return (count);
-            i++;
-        }
-        while (str[i] != '\0' && (ft_check_sep(str[i], charset) == 0))
-            i++;
-        count++;
-    }
-    return (count);
-}
-
-void    ff()
-{
-    fflush(stdout);
-}
-
-void    pline(int line)
-{
-    printf("line |%d|\n", line);
-    fflush(stdout);
-}
-
-
-void    pint(int integer)
-{
-    printf("int |%d|\n", integer);
-    fflush(stdout);
-}
-
-void    pstr(char *str)
-{
-    printf("str |%s|\n", str);
-    fflush(stdout);
-}
-
-void    pchar(char c)
-{
-    printf("c |%c|\n", c);
-    fflush(stdout);
-}
-
-void    pfloat(float c)
-{
-    printf("float |%f|\n", c);
-    fflush(stdout);
-}
+// void	display_head(t_node *stack)
+// {
+// 	if (stack != NULL)
+// 	{
+// 		printf("element on top: %d\n", stack->data);
+// 	}
+// 	else
+// 	{
+// 		printf("stack is empty.\n");
+// 	}
+// }

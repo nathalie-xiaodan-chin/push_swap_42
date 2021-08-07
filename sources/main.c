@@ -6,16 +6,30 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:10:28 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/04 22:13:27 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/06 16:42:20 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-// void	which_sorting_algo_to_call(t_node **stack, int total_nb)
-// {
-
-// }
+int	is_sorting_needed(t_node **stack, int total_nb)
+{
+	if (total_nb == 1)
+		return (0);
+	else if (total_nb == 2)
+		two_nb_sort(stack, total_nb);
+	else if (total_nb == 3)
+		three_nb_sort(stack);
+	else if (total_nb <= 5)
+		five_or_four_nb_sort(stack, total_nb);
+	else if (total_nb <= 100)
+		insertion_sort(stack, total_nb);
+	else if (total_nb > 100)
+		radix_sort(stack, total_nb);
+	else
+		return (0);
+	return (1);
+}
 
 int	main(int argc, char **argv)
 {
@@ -26,12 +40,8 @@ int	main(int argc, char **argv)
 
 	stack = NULL;
 	total_nb = 0;
-	init_linked_list(stack);
 	if (argc == 1)
-	{
-		write(1, "Error\n", 6);
-		exit(1);
-	}
+		error_and_exit();
 	else if (argc == 2)
 	{
 		list_nb = argv[1];
@@ -52,33 +62,7 @@ int	main(int argc, char **argv)
 		list_nb = ft_strjoin(list_nb, argv[i]);
 		stack = build_stack(list_nb, &total_nb);
 	}
-	if (total_nb == 1)
-	{
+	if (is_sorting_needed(&stack, total_nb))
 		return (0);
-	}
-	else if (total_nb == 2)
-	{
-		two_value_sort(&stack, total_nb);
-	}
-	else if (total_nb == 3)
-	{
-		three_nb_sort(&stack);
-	}
-	else if (total_nb <= 5)
-	{
-		five_or_four_nb(&stack, total_nb);
-	}
-	else if (total_nb <= 100)
-	{
-		insertion_sort(&stack, total_nb);
-	}
-	else if (total_nb > 100)
-	{
-		radix_sort(&stack, total_nb);
-	}
-	else
-	{
-		return (0);
-	}
 	return (0);
 }
