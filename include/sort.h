@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 15:13:21 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 18:58:54 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/08 00:25:21 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,16 @@ void	move_nb_to_b_by_chunk(t_node **stack_a, t_node **stack_b, int interval);
 void	push_chunk_nbs_to_b(t_node **sa, t_node **sb, t_sorting_toolbox *the);
 void	pre_sorting_stack(t_node **stack_a, t_node **stack_b);
 void	multiple_push_on_b(t_node **s_a, t_node **s_b, int number_of_time);
-void	push_nb_of_chunk_to_b(t_node** stack_a, t_node** stack_b, t_sorting_toolbox *the);
+// void	push_nb_of_chunk_to_b(t_node** stack_a, t_node** stack_b, t_sorting_toolbox *the);
 
 void	compute_number_closest_border(int i_pos, int stack_size, int* distance, int *refers_top);
 void	init_struct_sorting_toolbox(t_sorting_toolbox *init, int total_node);
 void	make_positive_number(t_node **stack_a, int smallest_nb_value);
+// void	push_nb_of_chunk_to_b(t_node **stack_a, t_node **stack_b, \
+// 		t_sorting_toolbox *the);
+void	push_nb_of_chunk_to_b(t_node** stack_a, t_node** stack_b, int chunk_min, int chunk_max);
 
+
+void	compute_distance_for_pushing_nb_of_chunk_to_b(t_node **stack_a, \
+		t_sorting_toolbox *the);
 #endif

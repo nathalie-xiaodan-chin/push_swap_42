@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:10:28 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 23:36:53 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/08 11:13:40 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ int	is_sorting_needed(t_node **stack, int total_nb)
 	else if (total_nb <= 5)
 		five_or_four_nb_sort(stack, total_nb);
 	else if (total_nb <= 100)
-	{
 		insertion_sort(stack, total_nb);
-	}
 	else if (total_nb > 100)
 		radix_sort(stack, total_nb);
 	else

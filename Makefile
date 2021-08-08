@@ -28,7 +28,9 @@ OBJS_TEST				=	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(SRCS_TEST:.c=.o)
 RM				= 	rm -f
 
 #Flags, Libraries and Includes
-CFLAGS			= 	-Wall -Wextra -Werror -g
+# CFLAGS			= 	-Wall -Wextra -Werror -g
+CFLAGS			= 	 -g
+
 LIBFT			= 	libft/libft.a
 GNL				= 	get_next_line/get_next_line.c
 # CFLAGS			= -Wall -Wextra -Werror -I

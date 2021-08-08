@@ -49,7 +49,6 @@ void test_insertion_sort()
 
 	printf("test_insertion_sort..\n\n");
 	t_node * stack_a;
-	t_node * stack_b;
 	int total_nb;
 
 
@@ -321,16 +320,24 @@ void	test_pre_sorting_stack()
 
 void	test_move_nb_of_chunk_to_top()
 {
+	pstr("test_push_chunks_nbs_to_b");
 	t_node * stack;
+	t_node * s_b;
 	int total_nb;
 	stack = build_stack("151 17 55 1 3 99", &total_nb);
 	//to fix and and stack b
-	// move_nb_of_chunk_to_top(&stack, 1, 5);
+	t_sorting_toolbox the;
+	init_struct_sorting_toolbox(&the, total_nb);
+	the.smallest_nb_value = 1;
+	the.biggest_nb_value = 5;
+
+	push_nb_of_chunk_to_b(&stack, &s_b, &the);
 	int expected_res = 3;
-	if (stack->data != expected_res)
+	if (s_b->data != expected_res)
 	{
 		printf("%d TRY AGAIN. It's %d and should be %d\n",
 				__LINE__, stack->data, expected_res);
+		display_stack(stack);
 		exit(1);
 	}
 
@@ -356,22 +363,22 @@ void	test_move_nb_of_chunk_to_top()
 
 int		main()
 {
-	// test_move_min_value_to_top();
-	test_insertion_sort();
+	test_move_min_value_to_top();
+	// test_insertion_sort();
 
-	// test_find_smallest_number_above();
-	// test_insert_nb_in_middles();
+	test_find_smallest_number_above();
+	test_insert_nb_in_middles();
 
-	// test_rotate_number_to_top();
+	test_rotate_number_to_top();
 
-	// test_compute_chunk_interval();
-	// test_move_nb_to_b_by_chunk();
+	test_compute_chunk_interval();
+	test_move_nb_to_b_by_chunk();
 
-	// test_stack_len();
+	test_stack_len();
 
-	// test_pre_sorting_stack();
+	test_pre_sorting_stack();
 
-	//test_move_nb_of_chunk_to_top();
+	test_move_nb_of_chunk_to_top();
 
 	printf("all test ok\n");
 
