@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:33:56 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/06 20:36:08 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/08 11:41:41 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_sorting_toolbox
 	int min_distance_to_border ;
 	int tmp_distance;
 	int tmp_does_distance_refer_top;
+	t_node *tmp;
 }				t_sorting_toolbox;
 
 typedef struct s_stack_toolbox

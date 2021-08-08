@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:53:00 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 19:48:30 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/08 11:49:16 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,4 @@ void	three_nb_sort(t_node **stack_a)
 		get_sa_and_ra(stack_a, &stack_b);
 	else if (a < b && b > c && c < a)
 		get_reverse("rra", stack_a, &stack_b);
-	// free_stack((*stack_a));
 }

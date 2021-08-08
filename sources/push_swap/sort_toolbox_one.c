@@ -6,13 +6,14 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 10:02:07 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 10:02:16 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/08 11:45:19 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	init_struct_sorting_toolbox(t_sorting_toolbox *init, int total_node)
+void	init_struct_sorting_toolbox(t_sorting_toolbox *init, int total_node, \
+		t_node *stack)
 {
 	init->smallest_nb_value = 0;
 	init->smallest_nb_pos = 0;
@@ -24,6 +25,9 @@ void	init_struct_sorting_toolbox(t_sorting_toolbox *init, int total_node)
 	init->total_node = total_node;
 	init->i_chunk = 0;
 	init->n_chunk = 5;
+	init->tmp = stack;
+	init->i_pos = 0;
+	init->min_distance_to_border = total_node;
 }
 
 int	compute_chunk_interval(int smallest_nb, int biggest_nb)
