@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 13:27:44 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 18:11:15 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/12 21:22:45 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,31 @@ void	reverse_action(t_node **stack_reversed)
 
 	if (is_stack_empty((*stack_reversed)))
 		return ;
-	else if ((*stack_reversed)->next == NULL)
-	{
-		free((*stack_reversed));
-		(*stack_reversed) = NULL;
+
+	if ((*stack_reversed)->next == NULL)
 		return ;
-	}
-	else if ((*stack_reversed) != NULL)
+
+
+	tmp = (*stack_reversed);
+	penultimate = NULL;
+	while (tmp->next != NULL)
 	{
-		tmp = (*stack_reversed);
-		penultimate = NULL;
-		while (tmp->next != NULL)
-		{
-			penultimate = tmp;
-			tmp = tmp->next;
-		}
-		push(tmp->data, stack_reversed);
-		free(penultimate->next);
-		penultimate->next = NULL;
+		penultimate = tmp;
+		tmp = tmp->next;
 	}
+
+	t_node *tmp_last_node = tmp;
+	t_node *tmp_first_node = (*stack_reversed);
+	tmp_last_node->next = tmp_first_node;
+	(*stack_reversed) = tmp_last_node;
+
+	penultimate->next = NULL;
+
 }
 
 void	get_reverse(char *cmd, t_node **stack_a, t_node **stack_b)
 {
+
 	if (ft_strncmp(cmd, "rra", 4) == 0)
 	{
 		reverse_action(stack_a);
@@ -63,21 +65,22 @@ void	get_reverse(char *cmd, t_node **stack_a, t_node **stack_b)
 void	rotate_action(t_node **stack_rotated)
 {
 	t_node	*tmp;
-	t_node	*new_node;
+	t_node	*previous_head;
 
 	if (is_stack_empty((*stack_rotated)) || (*stack_rotated)->next == NULL)
 		return ;
-	new_node = NULL;
+	previous_head = (*stack_rotated);
 	tmp = (*stack_rotated);
-	new_node = (t_node *)malloc(sizeof(t_node));
-	new_node->data = (*stack_rotated)->data;
+	// new_node = (t_node *)malloc(sizeof(t_node));
+	// new_node->data = (*stack_rotated)->data;
 	pop(stack_rotated);
 	while (tmp->next != NULL)
 	{
 		tmp = tmp->next;
 	}
-	tmp->next = new_node;
-	new_node->next = NULL;
+	tmp->next = previous_head;
+	previous_head->next = NULL;
+
 }
 
 void	get_rotate(char *cmd, t_node **stack_a, t_node **stack_b)

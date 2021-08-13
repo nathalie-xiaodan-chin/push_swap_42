@@ -6,21 +6,26 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 13:59:14 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 19:24:39 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/12 20:23:02 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	push(int data, t_node **stack)
+/**
+ * only used to build the stack
+ *
+ */
+void	create_and_push_value(int value, t_node **stack)
 {
 	t_node	*new_head;
 
 	new_head = (t_node *)malloc(sizeof(t_node));
-	new_head->data = data;
+	new_head->data = value;
 	new_head->next = (*stack);
 	(*stack) = new_head;
 }
+
 
 void	pop(t_node **stack)
 {

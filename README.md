@@ -1,18 +1,24 @@
-
-# push_swap
-
-
-https://discord.com/channels/774300457157918772/817041043764805692/850354416813080576
-
-https://discord.com/channels/774300457157918772/817041043764805692/819531131870642197
-
 **to do**
+- verifier que tous les nb de la stack a sont la pour le checker
+- rescenser malloc
+- boucle infinie pour gnl car end
+
+old =
 nb negatif ????
 - main : find from argv
 - output ?
 - gérer les str MAIS AUSSI LES INT
 - gérer les erreurs si ce n'est pas un chiffre
 - ARG="" && make push_swap  && ./push_swap $ARG SEGFAULT
+
+
+# push_swap
+
+https://discord.com/channels/774300457157918772/817041043764805692/850354416813080576
+
+https://discord.com/channels/774300457157918772/817041043764805692/819531131870642197
+
+
 
 **done**
 - entier positif et négatif

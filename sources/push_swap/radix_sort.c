@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:09:21 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 10:08:01 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/08 12:02:18 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	radix_sort(t_node **stack_a, int total_node)
 	t_node				*stack_b;
 	t_sorting_toolbox	the;
 
-	init_struct_sorting_toolbox(&the, total_node);
+	init_struct_sorting_toolbox(&the, total_node, (*stack_a));
 	the.biggest_nb_value = (*stack_a)->data;
 	stack_b = NULL;
 	find_smallest_nb(*stack_a, &the.smallest_nb_value, &the.smallest_nb_pos);

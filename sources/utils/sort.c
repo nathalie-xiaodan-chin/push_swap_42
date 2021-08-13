@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 13:38:07 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 10:17:47 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 17:08:13 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,25 @@ void	sorting_five(t_node **stack_a, t_node **stack_b)
 	int	smallest_nb_pos;
 
 	find_biggest_nb((*stack_a), &biggest_nb_value, &biggest_nb_pos);
+
+	printf("%d| biggest nb value %d and biggest nb pos %d\n", __LINE__, biggest_nb_value, biggest_nb_pos);
+	biggest_nb_pos = 4 ;
+	biggest_nb_value = -35;
+
 	five_nb_sort(stack_a, stack_b, biggest_nb_pos);
+
+	biggest_nb_pos = 4 ;
+	biggest_nb_value = -35;
+	smallest_nb_pos = 3 ;
+	smallest_nb_value = -659;
+
 	find_smallest_nb((*stack_a), &smallest_nb_value, &smallest_nb_pos);
+	printf("%d| smallest nb value %d and smallest nb pos %d\n", __LINE__, smallest_nb_value, smallest_nb_pos);
+
 	four_nb_sort(stack_a, stack_b, smallest_nb_pos);
+
 	three_nb_sort(stack_a);
+
 	get_push("pa", stack_a, stack_b);
 	get_push("pa", stack_a, stack_b);
 	get_rotate("ra", stack_a, stack_b);
@@ -76,14 +91,21 @@ void	sorting_five(t_node **stack_a, t_node **stack_b)
 
 void	sorting_four(t_node **stack_a, t_node **stack_b)
 {
+
 	int	biggest_nb_value;
 	int	biggest_nb_pos;
 	int	smallest_nb_value;
 	int	smallest_nb_pos;
 
 	find_biggest_nb((*stack_a), &biggest_nb_value, &biggest_nb_pos);
+
+
 	find_smallest_nb((*stack_a), &smallest_nb_value, &smallest_nb_pos);
+	// display_stack((*stack_a));
+
 	four_nb_sort(stack_a, stack_b, smallest_nb_pos);
 	three_nb_sort(stack_a);
+
 	get_push("pa", stack_a, stack_b);
+
 }

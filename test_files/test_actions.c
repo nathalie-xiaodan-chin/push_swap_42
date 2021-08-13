@@ -1,7 +1,121 @@
-// #include "../include/push_swap.h"
+#include "../include/push_swap.h"
 // /**
 //  * test function
 // */
+
+void test_five_nb(){
+	printf("test five nb sort nb\n");
+
+	t_node	*stack_a = NULL;
+	t_node	*stack_b = NULL;
+	int size;
+	stack_a = build_stack("2 3 4 5 1", &size);
+	int i_max = 3;
+	five_nb_sort(&stack_a, &stack_b, i_max);
+
+	if (! is_stack_sorted(stack_a)){
+		printf("poulet\n");
+		display_stack(stack_a);
+		exit(1);
+	}
+}
+
+
+
+void test_reverse_action(){
+
+	printf("test_reverse_action\n");
+	t_node	*stack_a;
+
+	int size;
+	stack_a = build_stack("2 3 4 5 1", &size);
+
+	reverse_action(&stack_a);
+	reverse_action(&stack_a);
+	if (stack_a->data != 5){
+		printf("pb stack a");
+		display_stack(stack_a);
+		exit(1);
+	}
+
+	stack_a = build_stack("2 3", &size);
+
+	reverse_action(&stack_a);
+	if (stack_a->data != 3){
+		printf("pb stack a\n");
+		display_stack(stack_a);
+		exit(1);
+	}
+}
+
+
+void test_swap_action(){
+
+	printf("test_swap_action\n");
+	t_node	*stack_a;
+
+	int size;
+	stack_a = build_stack("2 3 4 5 1", &size);
+
+	swap_action(&stack_a);
+
+	if (stack_a->data != 3){
+		printf("pb stack a\n");
+		display_stack(stack_a);
+		exit(1);
+	}
+}
+
+
+void test_rotate_action(){
+
+	printf("test_rotate_action\n");
+	t_node	*stack_a;
+
+	int size;
+	stack_a = build_stack("2 3 4 5 1", &size);
+	rotate_action(&stack_a);
+	if (stack_a->data != 3){
+		printf("pb stack a\n");
+		display_stack(stack_a);
+		exit(1);
+	}
+}
+
+
+void test_push_from_stack_to_stack(){
+
+	printf("test_push_from_stack_to_stack\n");
+	t_node	*stack_a;
+	t_node	*stack_b;
+	int size;
+	stack_a = build_stack("2 3 4 5 1", &size);
+
+	push_from_stack_to_stack(&stack_a, &stack_b);
+
+	if (stack_a->data != 3){
+		printf("pb stack a");
+		display_stack(stack_a);
+		exit(1);
+	}
+	if (stack_b->data != 2){
+		printf("pb stack b");
+		exit(1);
+	}
+}
+
+int		main()
+{
+	test_swap_action();
+	test_rotate_action();
+	test_reverse_action();
+	test_push_from_stack_to_stack();
+
+	test_five_nb();
+	printf("all tests passed\n");
+}
+
+
 
 // void	test_1()
 // {

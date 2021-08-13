@@ -146,7 +146,7 @@ if [[ ! $RES ]]
 	else
 		echo "$green OK ! $reset"
 fi
-rm test.out
+# rm test.out
 
 # WHITESPACE
 

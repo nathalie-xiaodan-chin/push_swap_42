@@ -6,18 +6,11 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 13:47:02 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 19:49:29 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 12:54:32 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
-
-void	init_struct_stack_toolbox(t_stack_toolbox *init)
-{
-	init->i = 0;
-	init->size = 0;
-	init->nb = 0;
-}
 
 void	reverse_stack(t_node **tmp)
 {
@@ -71,7 +64,7 @@ void	pushing_nb_in_stack(t_stack_toolbox *a, char *str, t_node **stack_a)
 			a->i++;
 		if (str[a->i] == '0')
 		{
-			push(0, stack_a);
+			create_and_push_value(0, stack_a);
 			a->size = 1 + a->size;
 		}
 		while (is_invisible_char(str[a->i]))
@@ -81,7 +74,7 @@ void	pushing_nb_in_stack(t_stack_toolbox *a, char *str, t_node **stack_a)
 			a->nb = long_long_atoi(&str[a->i]);
 			if (a->nb > 2147483647 || a->nb < -2147483648)
 				error_and_exit();
-			push(ft_atoi(&str[a->i]), stack_a);
+			create_and_push_value(ft_atoi(&str[a->i]), stack_a);
 			a->size = 1 + a->size;
 		}
 		while (ft_isdigit(str[a->i]) || str[a->i] == '-' || str[a->i] == '+')
@@ -102,9 +95,7 @@ t_node	*build_stack(char *str, int *stack_size)
 	*stack_size = a.size;
 	if (is_duplicate_in_stack(stack_a) != 0)
 	{
-		// free_stack(stack_a);
 		error_and_exit();
 	}
-
 	return (stack_a);
 }

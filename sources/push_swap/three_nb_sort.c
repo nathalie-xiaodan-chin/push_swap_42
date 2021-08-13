@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:53:00 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/08 11:49:16 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/12 19:51:12 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,49 @@ void	two_nb_sort(t_node **stack_a)
 
 void	three_nb_sort(t_node **stack_a)
 {
+	// display_stack((*stack_a));
+
 	int			a;
 	int			b;
 	int			c;
 	t_node		*tmp;
 	t_node		*stack_b;
-
 	tmp = (*stack_a);
 	stack_b = NULL;
+
 	a = tmp->data;
+
 	tmp = tmp->next;
+
 	b = tmp->data;
+
 	tmp = tmp->next;
+
 	c = tmp->data;
+
 	if (a > b && b < c && c > a)
+	{
+
 		get_swap("sa", stack_a, &stack_b);
+	}
 	else if (a > b && b > c && c < a)
+	{
+
 		get_sa_and_rra(stack_a, &stack_b);
+	}
 	else if (a > b && b < c && c < a)
+	{
+
 		get_rotate("ra", stack_a, &stack_b);
+	}
 	else if (a < b && b > c && c > a)
+	{
+
 		get_sa_and_ra(stack_a, &stack_b);
+	}
 	else if (a < b && b > c && c < a)
+	{
+
 		get_reverse("rra", stack_a, &stack_b);
+	}
 }

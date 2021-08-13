@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:40:05 by nachin            #+#    #+#             */
-/*   Updated: 2019/12/02 18:32:27 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 12:03:57 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*ft_add_str(char *str)
 	return (tmp);
 }
 
-int		ft_minus_one(int fd, char **line, char **str)
+int	ft_minus_one(int fd, char **line, char **str)
 {
 	if (*str == NULL)
 		*str = ft_strdup("");
@@ -95,7 +95,7 @@ void	ft_line_and_str(char **line, char **str)
 		*line = ft_strdup("");
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	char		buf[BUFFER_SIZE + 1];
 	static char	*str = NULL;
@@ -103,12 +103,17 @@ int		get_next_line(int fd, char **line)
 
 	if (ft_minus_one(fd, line, &str) == -1)
 		return (-1);
+	// end = 1;
 	end = 1;
-	while (ft_strchr(str, '\n') == NULL &&
-	(end = read(fd, buf, BUFFER_SIZE)) > 0)
+
+	// while (ft_strchr(str, '\n') == NULL && (end = read(fd, buf, BUFFER_SIZE)) > 0)
+	while (ft_strchr(str, '\n') == NULL)
 	{
+		end = read(fd, buf, BUFFER_SIZE);
 		buf[end] = '\0';
 		str = ft_strjoin_free(str, buf, 'L');
+		if (end <= 0)
+			break ;
 	}
 	if (end == -1)
 	{
@@ -117,8 +122,86 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	}
 	ft_line_and_str(line, &str);
-	end = end > 0 ? 1 : 0;
-	end == 0 && str != NULL ? free(str) : 0;
-	end == 0 && str != NULL ? str = NULL : 0;
+	if (end > 0)
+		end = 1;
+	else
+		end = 0;
+	if (end == 0 && str != NULL)
+		free(str);
+	if (end == 0 && str != NULL)
+		str = NULL;
 	return (end);
 }
+
+// int	get_next_line_old(int fd, char **line)
+// {
+// 	char		buf[BUFFER_SIZE + 1];
+// 	static char	*str = NULL;
+// 	int			end;
+
+// 	if (ft_minus_one(fd, line, &str) == -1)
+// 		return (-1);
+// 	end = 1;
+// 	while (ft_strchr(str, '\n') == NULL &&
+// 	(end = read(fd, buf, BUFFER_SIZE)) > 0)
+// 	{
+// 		buf[end] = '\0';
+// 		str = ft_strjoin_free(str, buf, 'L');
+// 	}
+// 	if (end == -1)
+// 	{
+// 		free(str);
+// 		str = NULL;
+// 		return (-1);
+// 	}
+// 	ft_line_and_str(line, &str);
+// 	end = end > 0 ? 1 : 0;
+// 	end == 0 && str != NULL ? free(str) : 0;
+// 	end == 0 && str != NULL ? str = NULL : 0;
+// 	return (end);
+// }
+
+// int	is_read_end(int end, char **line, char *str)
+// {
+// 	ft_line_and_str(line, &str);
+// 	if (end > 0)
+// 	{
+// 		end = 1;
+// 	}
+// 	else
+// 	{
+// 		end = 0;
+// 		free(&str);
+// 		str = NULL;
+// 	}
+// 	return (end);
+// }
+
+// int	get_next_line_new(int fd, char **line)
+// {
+// 	char		buf[BUFFER_SIZE + 1];
+// 	static char	*str = NULL;
+// 	int			read_amount;
+
+// 	if (ft_minus_one(fd, line, &str) == -1)
+// 		return (-1);
+
+// 	read_amount = 2;
+// 	while (buf[0] != '\n')
+// 	{
+// 		buf[read_amount] = '\0';
+// 		str = ft_strjoin_free(str, buf, 'L');
+
+// 		read_amount = read(fd, buf, BUFFER_SIZE);
+// 	}
+// 	printf("amount :%i\n", read_amount);
+// 	ft_line_and_str(line, &str);
+// 	if (read_amount == 1){
+// 		// free(&str);
+// 		str = NULL;
+
+// 		return 0;
+// 	}
+
+// 	return read_amount;
+// }

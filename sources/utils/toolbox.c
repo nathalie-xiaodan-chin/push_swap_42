@@ -6,11 +6,18 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 17:16:54 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 17:09:07 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 16:42:24 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+void	init_struct_stack_toolbox(t_stack_toolbox *init)
+{
+	init->i = 0;
+	init->size = 0;
+	init->nb = 0;
+}
 
 long long	long_long_atoi(const char *str)
 {

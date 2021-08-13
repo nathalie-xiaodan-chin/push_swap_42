@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:54:08 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 18:58:23 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 16:49:49 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,17 @@ int	find_pos(t_node *list, int value)
 	return (i);
 }
 
-void	four_nb_sort(t_node **stack_a, t_node**stack_b, int i)
+void	four_nb_sort(t_node **stack_a, t_node **stack_b, int i)
 {
+
 	if (i == 0)
 	{
+
 		get_push("pb", stack_a, stack_b);
 	}
 	else if (i == 1)
 	{
+
 		get_rotate("ra", stack_a, stack_b);
 		get_push("pb", stack_a, stack_b);
 	}
@@ -48,10 +51,16 @@ void	four_nb_sort(t_node **stack_a, t_node**stack_b, int i)
 	{
 		get_rotate("ra", stack_a, stack_b);
 		get_rotate("ra", stack_a, stack_b);
+		// display_stack((*stack_a));
+
+
 		get_push("pb", stack_a, stack_b);
+
+
 	}
 	else if (i == 3)
 	{
+
 		get_reverse("rra", stack_a, stack_b);
 		get_push("pb", stack_a, stack_b);
 	}
@@ -77,6 +86,7 @@ void	five_nb_sort(t_node **stack_a, t_node**stack_b, int i)
 		get_reverse("rra", stack_a, stack_b);
 		get_reverse("rra", stack_a, stack_b);
 		get_push("pb", stack_a, stack_b);
+
 	}
 	else if (i == 4)
 	{
@@ -88,14 +98,17 @@ void	five_nb_sort(t_node **stack_a, t_node**stack_b, int i)
 void	five_or_four_nb_sort(t_node **stack_a, int count)
 {
 	t_node	*stack_b;
-
 	stack_b = NULL;
+
+	// display_stack((*stack_a));printf("count %d\n", count);
+	// stack_len((*stack_a));
 	if (count == 4)
 	{
 		sorting_four(stack_a, &stack_b);
 	}
 	else if (count == 5)
 	{
+		pstr("we are in five_or_four_nb_sort so still ok");
 		sorting_five(stack_a, &stack_b);
 	}
 }

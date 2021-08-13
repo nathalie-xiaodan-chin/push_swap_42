@@ -17,18 +17,20 @@ SRCS_CHECKER	=	${wildcard sources/checker/*.c}
 
 SRCS_PUSH_SWAP	=	${wildcard sources/push_swap/*.c}
 
+SRCS_GNL		=	${wildcard get_next_line/*.c}
+
 SRCS_TEST		= 	${wildcard test_files/*.c}
 
 # SRCS_TEST		= 	$(filter-out $(MAIN), $(SRCS)) \
 
-OBJS_CHECKER			= 	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(SRCS_CHECKER:.c=.o)
-OBJS_PUSH_SWAP			= 	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(MAIN:.c=.o)
-OBJS_TEST				=	$(SRCS_UTILS:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(SRCS_TEST:.c=.o)
+OBJS_CHECKER			= 	$(SRCS_UTILS:.c=.o) $(SRCS_GNL:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(SRCS_CHECKER:.c=.o)
+OBJS_PUSH_SWAP			= 	$(SRCS_UTILS:.c=.o) $(SRCS_GNL:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(MAIN:.c=.o)
+OBJS_TEST				=	$(SRCS_UTILS:.c=.o) $(SRCS_GNL:.c=.o) $(SRCS_PUSH_SWAP:.c=.o) $(SRCS_TEST:.c=.o)
 
 RM				= 	rm -f
 
 #Flags, Libraries and Includes
-CFLAGS			= 	-Wall -Wextra -Werror -g
+CFLAGS			= 	-Wall -Wextra -Werror -g -O0
 # CFLAGS			= 	 -g
 
 LIBFT			= 	libft/libft.a
@@ -37,18 +39,30 @@ GNL				= 	get_next_line/get_next_line.c
 
 all:			push_swap checker test
 
+# push_swap:		$(OBJS_PUSH_SWAP)
+# 				cd libft && $(MAKE)
+# 				gcc ${CFLAGS} -o push_swap $(OBJS_PUSH_SWAP) ${LIBFT} ${GNL}
+
+
+# checker:		$(OBJS_CHECKER)
+# 				cd libft && $(MAKE)
+# 				gcc ${CFLAGS} -o checker $(OBJS_CHECKER) ${LIBFT} ${GNL}
+
+
+# test:			$(OBJS_TEST)
+# 				gcc -o test ${OBJS_TEST} ${LIBFT} ${GNL} ${LIBFT}
+
+
 push_swap:		$(OBJS_PUSH_SWAP)
-				cd libft && $(MAKE)
-				gcc ${CFLAGS} -o push_swap $(OBJS_PUSH_SWAP) ${LIBFT} ${GNL}
+				gcc ${CFLAGS} -o push_swap $(OBJS_PUSH_SWAP)
 
 
 checker:		$(OBJS_CHECKER)
-				cd libft && $(MAKE)
-				gcc ${CFLAGS} -o checker $(OBJS_CHECKER) ${LIBFT} ${GNL}
+				gcc ${CFLAGS} -o checker $(OBJS_CHECKER)
 
 
 test:			$(OBJS_TEST)
-				gcc -o test ${OBJS_TEST} ${LIBFT} ${GNL} ${LIBFT}
+				gcc -o test ${OBJS_TEST}
 
 
 clean:
