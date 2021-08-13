@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 09:08:05 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/09 09:30:40 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 18:33:21 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	ft_atoi(const char *str)
 {
-	int i;
-	int neg;
-	int result;
+	int	i;
+	int	neg;
+	int	result;
 
 	i = 0;
 	neg = 0;
 	result = 0;
-	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\t'
+	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\t' \
 	|| str[i] == '\n' || str[i] == '\r' || str[i] == '\v')
 		i++;
 	if (str[i] == '-')
@@ -70,21 +70,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (result);
 }
 
-// size_t	ft_strlen(const char *s)
-// {
-// 	unsigned int	i;
-// 	char			*str;
-
-// 	i = 0;
-// 	str = (char *)s;
-// 	while (str[i] != '\0')
-// 		i++;
-// 	return (i);
-// }
-
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
@@ -95,4 +83,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-

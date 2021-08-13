@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:13:30 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/11 16:23:40 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 17:47:14 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		if (start + len > ft_strlen(s))
 			len = ft_strlen(s) - start;
-		// if ((dst = malloc(sizeof(char) * (len + 1))) == NULL)
 		(dst = malloc(sizeof(char) * (len + 1)));
 		if (dst == NULL)
 			return (NULL);

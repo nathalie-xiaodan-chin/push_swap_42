@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:33:56 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/08 11:41:41 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 18:11:14 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct s_node
 {
-	int			data;
-	int			total_node;
+	int				data;
+	int				total_node;
 	struct s_node	*next;
 }				t_node;
 
@@ -36,12 +36,12 @@ typedef struct s_sorting_toolbox
 	int			chunk_min;
 	int			chunk_max;
 	int			chunk_range;
-	int i_pos;
-	int does_distance_refer_top;
-	int min_distance_to_border ;
-	int tmp_distance;
-	int tmp_does_distance_refer_top;
-	t_node *tmp;
+	int			i_pos;
+	int			does_distance_refer_top;
+	int			min_distance_to_border ;
+	int			tmp_distance;
+	int			tmp_does_distance_refer_top;
+	t_node		*tmp;
 }				t_sorting_toolbox;
 
 typedef struct s_stack_toolbox

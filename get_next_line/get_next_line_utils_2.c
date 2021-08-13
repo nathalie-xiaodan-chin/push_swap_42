@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   get_next_line_utils_2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 10:50:07 by nachin            #+#    #+#             */
-/*   Updated: 2021/07/26 22:12:52 by nachin           ###   ########.fr       */
+/*   Created: 2021/08/13 17:54:40 by nachin            #+#    #+#             */
+/*   Updated: 2021/08/13 17:54:57 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strjoin(char const *s1, char const *s2)
+#include "get_next_line.h"
+char	*ft_strjoin_free(char *s1, char *s2, char ctrl)
 {
 	char	*result;
 	int		i;
@@ -31,5 +30,31 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2[i] != '\0')
 		result[j++] = s2[i++];
 	result[j] = '\0';
+	if (ctrl == 'L' || ctrl == 'B')
+		free(s1);
+	if (ctrl == 'R' || ctrl == 'B')
+		free(s2);
 	return (result);
+}
+
+char	*ft_add_str(char *str)
+{
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	if (ft_strchr(str, '\n') != NULL)
+	{
+		while (str[i] != '\n')
+			i++;
+		i = i + 1;
+		tmp = ft_substr(str, i, ft_strchr(str, '\0') - str);
+	}
+	else
+	{
+		tmp = malloc(1);
+		tmp[0] = '\0';
+	}
+	free(str);
+	return (tmp);
 }

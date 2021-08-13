@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:10:28 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/13 17:34:38 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 18:14:41 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,40 +65,13 @@ void	processing_push_swap_args(int argc, char **argv, t_node **stack, \
 
 int	main(int argc, char **argv)
 {
-
 	int			total_nb;
 	t_node		*stack;
 
 	stack = NULL;
 	total_nb = 0;
 	processing_push_swap_args(argc, argv, &stack, &total_nb);
-	//if (is_sorting_needed(&stack, total_nb))
-	//	return (0);
 	sorting_stack(&stack, total_nb);
-	// display_stack(stack);
-
 	free_stack(stack);
-	//char *test = malloc(sizeof(char) * 22);
-	//test[1] = 'q';
-	// system("sudo leaks a.out");
-	// while (1)
-	// {
-	// 	printf("leaks\n");
-	// }
 	return (0);
 }
-
-// int	main(int argc, char **argv)
-// {
-
-// 	t_node		*stack_a;
-// 	t_node		*stack_b;
-
-// 	stack_a = build_stack("1 2 3", 0);
-// 	stack_b = build_stack("4", 0);
-
-// 	push_action(&stack_a, &stack_b);
-// 	return (0);
-// }
-
-

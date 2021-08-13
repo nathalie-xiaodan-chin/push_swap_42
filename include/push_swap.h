@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 15:15:52 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/13 17:35:22 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 18:06:11 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@
 # include <unistd.h>
 # include "toolbox.h"
 # include "stack.h"
-// # include "checker.h"
 # include "struct.h"
 # include "actions.h"
 # include "sort.h"
 # include "error.h"
 # include "checker.h"
 # include "free.h"
-# include "../libft/libft.h"
+# include "lib.h"
 # include "../get_next_line/get_next_line.h"
 # define RED "\033[1;31m"
 # define BLACK "\033[1;30m"
@@ -39,7 +38,6 @@
 
 void	processing_push_swap_args(int argc, char **argv, t_node **stack, \
 		int *total_nb);
-
-int	sorting_stack(t_node **stack, int total_nb);
+int		sorting_stack(t_node **stack, int total_nb);
 
 #endif

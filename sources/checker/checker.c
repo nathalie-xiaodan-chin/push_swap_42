@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 11:53:12 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/13 16:31:13 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 18:38:22 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ void	execute_instructions(char *instruction, t_node **stack_a, \
 		t_node **stack_b)
 {
 	if (ft_strlen(instruction) == 1)
-	{
-		// printf("invalid instruction: %s\n", instruction);
 		exit(1);
-	}
 	else if (is_swap(instruction) == 1)
 		swap_for_checker(instruction, stack_a, stack_b);
 	else if (is_push(instruction) == 1)
@@ -29,10 +26,7 @@ void	execute_instructions(char *instruction, t_node **stack_a, \
 	else if (is_reverse(instruction) == 1)
 		reverse_for_checker(instruction, stack_a, stack_b);
 	else
-	{
-		printf("invalid instruction: %s\n", instruction);
 		exit(1);
-	}
 }
 
 void	checker(t_node **stack_a, t_node **stack_b)
