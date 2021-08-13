@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:54:08 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/13 16:49:49 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 17:24:43 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ void	five_or_four_nb_sort(t_node **stack_a, int count)
 	}
 	else if (count == 5)
 	{
-		pstr("we are in five_or_four_nb_sort so still ok");
 		sorting_five(stack_a, &stack_b);
 	}
 }

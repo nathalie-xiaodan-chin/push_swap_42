@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 15:15:52 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/07 19:42:35 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 17:35:22 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,10 @@
 # define CYAN "\033[1;36m"
 # define WHITE "\033[1;37m"
 # define NO_COLOR "\033[0m"
+
+void	processing_push_swap_args(int argc, char **argv, t_node **stack, \
+		int *total_nb);
+
+int	sorting_stack(t_node **stack, int total_nb);
+
 #endif

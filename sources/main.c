@@ -6,13 +6,13 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:10:28 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/13 16:49:21 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/13 17:34:38 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	is_sorting_needed(t_node **stack, int total_nb)
+int	sorting_stack(t_node **stack, int total_nb)
 {
 	if (total_nb == 1)
 		return (0);
@@ -22,7 +22,6 @@ int	is_sorting_needed(t_node **stack, int total_nb)
 		three_nb_sort(stack);
 	else if (total_nb <= 5)
 	{
-		pstr("for the moment, things are going well");
 		five_or_four_nb_sort(stack, total_nb);
 	}
 	else if (total_nb <= 100)
@@ -75,8 +74,8 @@ int	main(int argc, char **argv)
 	processing_push_swap_args(argc, argv, &stack, &total_nb);
 	//if (is_sorting_needed(&stack, total_nb))
 	//	return (0);
-	is_sorting_needed(&stack, total_nb);
-	display_stack(stack);
+	sorting_stack(&stack, total_nb);
+	// display_stack(stack);
 
 	free_stack(stack);
 	//char *test = malloc(sizeof(char) * 22);
