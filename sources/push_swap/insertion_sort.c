@@ -23,12 +23,8 @@
 int	insertion_sort(t_node **stack_a, int total_nb)
 {
 	t_node	*stack_b;
-	t_node	*tmp_a;
-	int		i;
 
 	stack_b = NULL;
-	tmp_a = (*stack_a);
-	i = total_nb;
 	pre_sorting_stack(stack_a, &stack_b);
 	total_nb = stack_len(*stack_a);
 	while (stack_b != NULL)
@@ -83,11 +79,9 @@ int	insert_nb_in_extremities(t_node **stack_a, t_node **stack_b, int total_nb)
 
 void	insert_nb_in_middles(t_node**stack_a, t_node **stack_b)
 {
-	int	i;
 	int	total_node;
 	int	pos;
 
-	i = 0;
 	pos = find_smallest_nb_above_x((*stack_a), (*stack_b)->data, &total_node);
 	rotate_number_to_top(stack_a, pos, total_node);
 	get_push("pa", stack_a, stack_b);

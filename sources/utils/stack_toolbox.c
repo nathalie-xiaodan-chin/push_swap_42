@@ -14,11 +14,8 @@
 
 void	pop(t_node **stack)
 {
-	t_node	*tmp;
-
 	if ((*stack) != NULL)
 	{
-		tmp = (*stack);
 		(*stack) = (*stack)->next;
 	}
 	else

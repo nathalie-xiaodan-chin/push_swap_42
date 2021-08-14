@@ -41,13 +41,11 @@ void	move_nb_to_b_by_chunk(t_node **stack_a, t_node **stack_b, int interval)
 	int					i_chunk;
 	int					n_chunk;
 	int					total_node;
-	t_node				*tmp;
 
 	init_struct_sorting_toolbox(&t, 0, (*stack_a));
 	find_biggest_and_smallest((*stack_a), &t.chunk_min, &t.chunk_max);
 	t.chunk_range = interval / 5;
 	t.chunk_max = t.chunk_min + t.chunk_range;
-	tmp = (*stack_a);
 	n_chunk = 5;
 	i_chunk = 0;
 	while (i_chunk < n_chunk)

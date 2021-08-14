@@ -26,11 +26,8 @@ void	push_from_stack_to_stack(t_node **stack_pushed, t_node **stack_received)
 
 void	push_action(t_node **stack_pushed, t_node **stack_received)
 {
-	int	tmp;
-
 	if (is_stack_empty((*stack_pushed)))
 		return ;
-	tmp = (*stack_pushed)->data;
 	push_from_stack_to_stack(stack_pushed, stack_received);
 }
 
