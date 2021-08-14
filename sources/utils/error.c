@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 13:37:31 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/05 13:37:33 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/14 18:38:02 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_and_exit(void)
 {
-	write(1, "Error\n", 6);
+	ft_putendl_fd("Error", 2);
 	exit(1);
 }
 
@@ -24,12 +24,12 @@ int	is_duplicate_in_stack(t_node *stack)
 	t_node	*j;
 
 	i = stack;
-	j = stack->next;
-	while (i != NULL)
+	while (i->next != NULL)
 	{
 		j = i->next;
 		while (j != NULL)
 		{
+
 			if (i->data == j->data)
 			{
 				return (1);
@@ -38,6 +38,7 @@ int	is_duplicate_in_stack(t_node *stack)
 		}
 		i = i->next;
 	}
+
 	return (0);
 }
 

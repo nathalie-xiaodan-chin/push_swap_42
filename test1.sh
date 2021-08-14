@@ -137,7 +137,7 @@ rm test.out
 # OVERFLOW
 
 echo -ne "${blue} Test : Overflow int $reset"
-./push_swap -2147483649 2  test.out
+./push_swap -2147483649 2 >> test.out
 ./push_swap 2147483648 2 >> test.out
 RES=`grep -x "Error$" test.out`
 if [[ ! $RES ]]
@@ -146,7 +146,7 @@ if [[ ! $RES ]]
 	else
 		echo "$green OK ! $reset"
 fi
-# rm test.out
+rm test.out
 
 # WHITESPACE
 

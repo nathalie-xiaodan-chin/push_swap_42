@@ -6,7 +6,7 @@
 #    By: nachin <nachin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/14 00:38:50 by nachin            #+#    #+#              #
-#    Updated: 2021/08/14 01:33:25 by nachin           ###   ########.fr        #
+#    Updated: 2021/08/14 12:36:21 by nachin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,10 +71,10 @@ GNL				= 	get_next_line/get_next_line.c
 
 all:			${NAME} ${CHECKER}
 
-push_swap:		$(OBJS_PUSH_SWAP)
+${NAME}:		$(OBJS_PUSH_SWAP)
 				gcc ${CFLAGS} -o ${NAME} $(OBJS_PUSH_SWAP)
 
-checker:		$(OBJS_CHECKER)
+${CHECKER}:		$(OBJS_CHECKER)
 				gcc ${CFLAGS} -o ${CHECKER} $(OBJS_CHECKER)
 
 clean:

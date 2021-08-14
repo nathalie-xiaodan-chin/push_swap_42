@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:33:47 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/13 18:11:48 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/14 12:40:09 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void		push_from_stack_to_stack(t_node **stack_pushed, \
 			t_node **stack_received);
 void		pop(t_node **stack);
 void		display_stack(t_node *head);
-void		display_head(t_node *stack);
 void		printReverse(t_node *head);
 int			is_stack_empty(t_node *stack);
 t_node		*build_stack(char *str, int *stack_size);

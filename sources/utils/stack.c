@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 13:47:02 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/13 12:54:32 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/14 18:39:19 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ t_node	*build_stack(char *str, int *stack_size)
 {
 	t_node			*stack_a;
 	t_stack_toolbox	a;
-
 	stack_a = NULL;
 	init_struct_stack_toolbox(&a);
 	check_errors_in_str(&a, str);
 	pushing_nb_in_stack(&a, str, &stack_a);
 	reverse_stack(&stack_a);
 	*stack_size = a.size;
-	if (is_duplicate_in_stack(stack_a) != 0)
+
+	if (is_duplicate_in_stack(stack_a))
 	{
 		error_and_exit();
 	}
