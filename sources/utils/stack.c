@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 13:47:02 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/14 18:39:19 by nachin           ###   ########.fr       */
+/*   Updated: 2021/09/12 21:13:56 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_errors_in_str(t_stack_toolbox *a, char *str)
 	{
 		if (!ft_isdigit(str[a->i]) && !is_invisible_char(str[a->i]) && \
 			str[a->i] != '-' && str[a->i] != '+')
-			error_and_exit();
+				error_and_exit();
 		a->i++;
 	}
 	a->i = 0;

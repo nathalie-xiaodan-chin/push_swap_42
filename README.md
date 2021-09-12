@@ -1,10 +1,16 @@
+
+test1.sh => ok (FYI test avec sortie standard donc ko est normal)
+test3.py => ne marche pas
+
+./test5.sh => truc a la mano
+
 # I. How to run push_swap
 
 #### **a. With an environment variable :**
-- without the checker
+- without any checker
 
   `ARG="5 1 3 4 2" && make push_swap && ./push_swap $ARG`
-- without the checker and using the command `wc` to count the instructions
+- without any checker and using the command `wc` to count the instructions
 
   `ARG="5 1 3 4 2" && make push_swap && ./push_swap $ARG | wc -l`
 - with the checker given by the school
@@ -15,7 +21,7 @@
 
   `ARG="5 1 3 4 2" && make push_swap && make checker && ./push_swap $ARG | ./checker $ARG`
 
-- only with the checker
+- only with my own checker
 
   `./checker "5 1 3 4 2"`. Then, enter the list of instructions followed by enter. To stop the lecture of the instruction, ctrl-D in order to have an EOF
 
@@ -55,12 +61,17 @@
 
 - Online testers I used :
 
-https://github.com/lmalki-h/push_swap_tester
-https://github.com/LeoFu9487/push_swap_tester
-https://github.com/fleger42/push_swap_tester
-https://github.com/mokolodi1/push-swap/blob/master/tester.py
-https://github.com/busshi/push_swap_checker
-https://github.com/BarbaraC12/PushSwap_tester
+  https://github.com/lmalki-h/push_swap_tester
+
+  https://github.com/busshi/push_swap_checker
+
+  https://github.com/LeoFu9487/push_swap_tester
+
+  https://github.com/fleger42/push_swap_tester (linux)
+
+  https://github.com/mokolodi1/push-swap/blob/master/tester.py
+
+  https://github.com/BarbaraC12/PushSwap_tester
 
 # III. How to grade push_swap
 

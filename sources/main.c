@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:10:28 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/14 18:39:04 by nachin           ###   ########.fr       */
+/*   Updated: 2021/09/12 21:11:40 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	sorting_stack(t_node **stack, int total_nb)
 {
-
+	if (total_nb ==0){
+		return 0;
+	}
 	if (total_nb == 1)
 		return (0);
 	else if (total_nb == 2)
@@ -26,6 +28,7 @@ int	sorting_stack(t_node **stack, int total_nb)
 	else if (total_nb <= 100)
 		insertion_sort(stack, total_nb);
 	else if (total_nb > 100)
+
 		radix_sort(stack, total_nb);
 	else
 		return (0);
@@ -67,20 +70,24 @@ void	processing_push_swap_args(int argc, char **argv, t_node **stack, \
 		int *total_nb)
 {
 
-	char		*list_nb;
-	if (argc == 1)
-		exit(1);
+	char	*list_nb;
+		// char	*list_nb;
 
+	if (argc == 1)
+		exit(0);
 	if (argc == 2)
 	{
+		if (ft_strncmp(argv[1], "", 1) == 0)
+			exit(0);
 		list_nb = argv[1];
 		(*stack) = build_stack(list_nb, total_nb);
+		// if ((*stack)->next == NULL)
+		// 	exit(1);
 		if ((*stack)->next == NULL)
-			exit(1);
+			return ;
 	}
 	else //if (argc > 2)
 	{
-		char *list_nb;
 		list_nb = concat_argv_to_str(argc, argv);
 		(*stack) = build_stack(list_nb, total_nb);
 		free(list_nb);
@@ -95,10 +102,12 @@ int	main(int argc, char **argv)
 	stack = NULL;
 	total_nb = 0;
 	processing_push_swap_args(argc, argv, &stack, &total_nb);
-	if (!is_stack_sorted(stack)){
+	if (!is_stack_sorted(stack))
+	{
 		sorting_stack(&stack, total_nb);
 	}
-
 	free_stack(stack);
+	// fflush(stdout);
+	// fflush(stderr);
 	return (0);
 }

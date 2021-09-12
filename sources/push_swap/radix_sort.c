@@ -6,11 +6,28 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:09:21 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/08 12:02:18 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/14 23:04:38 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+
+void	reduce_number(t_node **stack_a, int biggest)
+{
+	t_node	*tmp;
+	float t;
+	tmp = (*stack_a);
+	while (tmp != NULL)
+	{
+		t = ((float) tmp->data) / ((float) biggest);
+		t =  (t * 4000);
+		tmp->data = (int)t;
+		tmp = tmp->next;
+	}
+}
+
+
 
 /**
  * Radix sort algorithm adapted for push_swap:
@@ -27,11 +44,27 @@ void	radix_sort(t_node **stack_a, int total_node)
 	t_sorting_toolbox	the;
 
 	init_struct_sorting_toolbox(&the, total_node, (*stack_a));
-	the.biggest_nb_value = (*stack_a)->data;
+	// the.biggest_nb_value = (*stack_a)->data;
 	stack_b = NULL;
 	find_smallest_nb(*stack_a, &the.smallest_nb_value, &the.smallest_nb_pos);
-	if (the.smallest_nb_value < 0)
+	find_biggest_nb(*stack_a, &the.biggest_nb_value, &the.biggest_nb_pos);
+	if (the.smallest_nb_value < 0){
 		make_positive_number(stack_a, the.smallest_nb_value);
+		find_smallest_nb(*stack_a, &the.smallest_nb_value, &the.smallest_nb_pos);
+		find_biggest_nb(*stack_a, &the.biggest_nb_value, &the.biggest_nb_pos);
+	}
+
+	if (the.biggest_nb_value > 999){
+		// // make_positive_number(stack_a, the.smallest_nb_value);
+		// reduce_number(stack_a, the.biggest_nb_value);
+		// // the.biggest_nb_value = 4000;
+		// find_biggest_nb(*stack_a, &the.biggest_nb_value, &the.biggest_nb_pos);
+		// find_smallest_nb(*stack_a, &the.smallest_nb_value, &the.smallest_nb_pos);
+		insertion_sort(stack_a, total_node);
+		return;
+	}
+
+
 	while (1)
 	{
 		the.i_node = 0;
@@ -54,8 +87,8 @@ void	checking_all_nodes(t_sorting_toolbox *a, t_node **s_a, t_node **s_b)
 	while (a->i_node < a->total_node)
 	{
 		a->current_node_value = (*s_a)->data;
-		if (a->current_node_value > a->biggest_nb_value)
-			a->biggest_nb_value = a->current_node_value;
+		// if (a->current_node_value > a->biggest_nb_value)
+		// 	a->biggest_nb_value = a->current_node_value;
 		a->ith_digit_value = (a->current_node_value >> a->ith_digit_pos) % 2;
 		if (a->ith_digit_value == 1)
 			get_rotate("ra", s_a, s_b);
@@ -76,3 +109,8 @@ void	make_positive_number(t_node **stack_a, int smallest_nb_value)
 		tmp = tmp->next;
 	}
 }
+
+
+
+
+

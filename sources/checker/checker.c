@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 11:53:12 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/13 18:38:22 by nachin           ###   ########.fr       */
+/*   Updated: 2021/08/14 19:47:35 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ void	processing_checker_args(int argc, char **argv, t_node **stack_a, \
 		list_nb = argv[1];
 		(*stack_a) = build_stack(list_nb, &total_nb);
 		if ((*stack_a)->next == NULL)
+		{
+			ft_putendl_fd("OK", 1);
 			exit(1);
+		}
 	}
 	else if (argc > 2)
 	{
@@ -94,12 +97,12 @@ int	main(int argc, char **argv)
 	checker(&stack_a, &stack_b);
 	if (is_stack_sorted(stack_a) && total_nb == stack_len(stack_a))
 	{
-		write(1, "OK\n", 3);
+		ft_putendl_fd("OK", 1);
 		return (0);
 	}
 	else
 	{
-		write(1, "KO\n", 3);
+		ft_putendl_fd("KO", 1);
 		return (1);
 	}
 }
