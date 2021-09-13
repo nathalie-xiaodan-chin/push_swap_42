@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 22:10:28 by nachin            #+#    #+#             */
-/*   Updated: 2021/09/12 21:11:40 by nachin           ###   ########.fr       */
+/*   Updated: 2021/09/13 11:05:08 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,16 @@ char* concat_argv_to_str(int	argc, char	**argv){
 		tmp1 = ft_strjoin(list_nb, argv[i]);
 		if (i >1)//on free tmp2 de l iteration d avant
 			free(tmp2);
-
 		if (i < argc - 1){
 			tmp2 = ft_strjoin(tmp1, " ");
 			free(tmp1);
 			list_nb = tmp2;
 		}
-		else{
+		else
 			list_nb = tmp1;
-		}
-
 		i++;
 	}
-
-	return list_nb;
+	return (list_nb);
 }
 
 void	processing_push_swap_args(int argc, char **argv, t_node **stack, \
@@ -71,8 +67,6 @@ void	processing_push_swap_args(int argc, char **argv, t_node **stack, \
 {
 
 	char	*list_nb;
-		// char	*list_nb;
-
 	if (argc == 1)
 		exit(0);
 	if (argc == 2)
@@ -107,7 +101,5 @@ int	main(int argc, char **argv)
 		sorting_stack(&stack, total_nb);
 	}
 	free_stack(stack);
-	// fflush(stdout);
-	// fflush(stderr);
 	return (0);
 }
