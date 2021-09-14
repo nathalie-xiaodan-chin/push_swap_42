@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 13:47:02 by nachin            #+#    #+#             */
-/*   Updated: 2021/09/12 21:15:04 by nachin           ###   ########.fr       */
+/*   Updated: 2021/09/13 16:39:51 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_errors_in_str(t_stack_toolbox *a, char *str)
 	{
 		if (!ft_isdigit(str[a->i]) && !is_invisible_char(str[a->i]) && \
 			str[a->i] != '-' && str[a->i] != '+')
-				error_and_exit();
+			error_and_exit();
 		a->i++;
 	}
 	a->i = 0;
@@ -86,13 +86,13 @@ t_node	*build_stack(char *str, int *stack_size)
 {
 	t_node			*stack_a;
 	t_stack_toolbox	a;
+
 	stack_a = NULL;
 	init_struct_stack_toolbox(&a);
 	check_errors_in_str(&a, str);
 	pushing_nb_in_stack(&a, str, &stack_a);
 	reverse_stack(&stack_a);
 	*stack_size = a.size;
-
 	if (is_duplicate_in_stack(stack_a))
 	{
 		error_and_exit();

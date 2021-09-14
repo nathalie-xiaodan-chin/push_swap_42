@@ -1,8 +1,13 @@
 
-test1.sh => ok (FYI test avec sortie standard donc ko est normal)
+PB :
+test4 = pb avec 500
+./test5.sh => si test avec 100 et 500 = pb
 test3.py => ne marche pas
+test2 leofu = TLE
 
-./test5.sh => truc a la mano
+test1.sh => ok (FYI test avec sortie standard donc ko est normal)
+
+
 
 # I. How to run push_swap
 

@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 15:13:21 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/13 18:08:53 by nachin           ###   ########.fr       */
+/*   Updated: 2021/09/13 12:59:44 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SORT_H
 # include "struct.h"
 
+void	radix_sort_negative_nb(t_node **stack_a, t_sorting_toolbox *the);
 void	checking_all_nodes(t_sorting_toolbox *a, t_node **s_a, t_node **s_b);
 void	sorting_four(t_node **stack_a, t_node **stack_b);
 int		is_stack_sorted(t_node *stack);

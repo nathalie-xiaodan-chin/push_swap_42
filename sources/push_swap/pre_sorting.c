@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 19:41:41 by nachin            #+#    #+#             */
-/*   Updated: 2021/09/13 11:02:02 by nachin           ###   ########.fr       */
+/*   Updated: 2021/09/13 11:41:34 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,11 @@ void	move_nb_to_b_by_chunk(t_node **stack_a, t_node **stack_b, int interval)
 	int					n_chunk;
 	int					total_node;
 
-	n_chunk = 15;//11 better pour 100 nombres
+	n_chunk = 15;
 	init_struct_sorting_toolbox(&t, 0, (*stack_a));
 	find_biggest_and_smallest((*stack_a), &t.chunk_min, &t.chunk_max);
 	t.chunk_range = interval / n_chunk;
 	t.chunk_max = t.chunk_min + t.chunk_range;
-
 	i_chunk = 0;
 	while (i_chunk < n_chunk)
 	{

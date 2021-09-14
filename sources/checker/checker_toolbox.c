@@ -6,11 +6,17 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 11:50:59 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/08 11:52:56 by nachin           ###   ########.fr       */
+/*   Updated: 2021/09/13 15:45:19 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+void	print_ok(void)
+{
+	ft_putendl_fd("OK", 1);
+	exit(1);
+}
 
 int	is_swap(char *cmd)
 {

@@ -6,7 +6,7 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 13:37:31 by nachin            #+#    #+#             */
-/*   Updated: 2021/08/14 19:27:58 by nachin           ###   ########.fr       */
+/*   Updated: 2021/09/13 15:48:01 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	is_duplicate_in_stack(t_node *stack)
 		j = i->next;
 		while (j != NULL)
 		{
-
 			if (i->data == j->data)
 			{
 				return (1);
@@ -38,7 +37,6 @@ int	is_duplicate_in_stack(t_node *stack)
 		}
 		i = i->next;
 	}
-
 	return (0);
 }
 
