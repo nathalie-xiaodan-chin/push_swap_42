@@ -6,11 +6,12 @@
 /*   By: nachin <nachin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 17:54:40 by nachin            #+#    #+#             */
-/*   Updated: 2021/09/10 22:57:33 by nachin           ###   ########.fr       */
+/*   Updated: 2021/09/16 16:14:15 by nachin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
 char	*ft_strjoin_free(char *s1, char *s2, char ctrl)
 {
 	char	*result;

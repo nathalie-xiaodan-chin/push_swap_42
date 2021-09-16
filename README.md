@@ -1,12 +1,15 @@
-
+# To be resolved
 PB :
+
 test4 = pb avec 500
+
 ./test5.sh => si test avec 100 et 500 = pb
+
 test3.py => ne marche pas
+
 test2 leofu = TLE
 
 test1.sh => ok (FYI test avec sortie standard donc ko est normal)
-
 
 
 # I. How to run push_swap
@@ -53,6 +56,7 @@ test1.sh => ok (FYI test avec sortie standard donc ko est normal)
 
 # II. How to test push_swap
 
+## a. Push_swap program
 - Test with a mix of negative and positive numbers and then, only positive numbers and then, only negative numbers. **Desired outcome : OK**
 - Test with arguments bigger than an integer (`INT_MIN`, `INT_MAX`). **Desired outcome : Error**
 - Test with arguments that aren’t integers. **Desired outcome : Error**
@@ -63,6 +67,27 @@ test1.sh => ok (FYI test avec sortie standard donc ko est normal)
 
   Example :
     `./push_swap "5 1 3 4 2"` and also `./push_swap 5 1 3 4 2`
+- Run the following command "$>./push_swap 42". The program should display nothing (0 instruction).
+- Run the following command "$>./push_swap 0 1 2 3". The program should display nothing (0 instruction).
+- Run the following command "$>./push_swap 0 1 2 3 4 5 6 7 8 9". The program should display nothing (0 instruction).
+
+## b. Checker program
+
+- Test checker with non numeric parameters. The program must display "Error"
+- Run checker with a duplicate numeric parameter. The program must display "Error".
+- Run checker with only numeric parameters including one greater than MAXINT. The program must display "Error".
+- Run checker without any parameters. The program must not display anything and give the prompt back.
+- Run checker with valid parameters, and write an action that doesn't exist during the instruction phase. The program must display "Error".
+- Run checker with valid parameters, and write an action with one or several spaces before and/or after the action during the instruction phase. The program must display "Error".
+- Run checker with the following command "$>./checker 0 9 1 8 2 7 3 6 4 5" then write the following valid action list
+"[sa, pb, rrr]". Checker should display "KO".
+- Run checker with the following command "$>./checker 0 1 2" then press CTRL+D without writing any instruction. The
+program should display "OK".
+- Run checker with the following command "$>./checker 0 9 1 8 2" then write the following valid action list
+"[pb, ra, pb, ra, sa, ra, pa, pa]". The program should
+display "OK".
+
+## c. Online testers
 
 - Online testers I used :
 
@@ -119,11 +144,12 @@ Pour 500 values = barème de 1 à 5
     - This means, that I sort one number at a time. I take the number x from stack b and then I iterate in stack a to find the number that is just above our number x. And I'll push it using the minimum operation by still using the method of: "Should this number be in the top half or the bottom half of the stack a ?"
 
 #### **d. For 500 random numbers and above :**
-- Use an adapted version radix sort :
+- if the biggest number value is below 999: use an adapted version radix sort :
   - Instead of sorting with base ten numerals, I'll sort with base two numerals. (Because I don't have 10 stacks, I only have 2 stacks).
   - No need to convert in binary. Using % 2 to get the last digit in binary
   - Using bitwise operator >> to shift all the bits to the right
   - Break out of the while loop when the ith-digit of the biggest number is 0
+- if the biggest number value is above 999: use insertion sort
 
 # V. Documentation that helped me
 - https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
