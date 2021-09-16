@@ -1,5 +1,7 @@
 
 PB :
+UPDATE MY LIST OF TESTERS
+
 test4 = pb avec 500
 ./test5.sh => si test avec 100 et 500 = pb
 test3.py => ne marche pas
@@ -130,11 +132,35 @@ Pour 500 values = barème de 1 à 5
 - https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
 - Reminder on pointer and why to use double pointer for a linked list : https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/
 
+# NB. How to update the Norminette in the VM
+
+- https://github.com/42School/norminette
+- check if you have the latest version for python (need python3.7+)
+- check your version of Ubuntu with `lsb_release -a`
+
+- check your version of the Norminette. If it's inferior at v3 :
+  - `which norminette`. Delete the old Norminette and if needed use `unalias`
 
 
+where is the new Norminette with find ? `whereis norminette`
+$HOME/.local/bin
+echo #PATH
+nano ~/.profile
+Add this line :
+`PATH=$PATH:$HOME/.local/bin`
+The .profile file is present in your home ($HOME) directory and lets you customize your individual working environment.
 
+To make the change effective in your terminal :
+source ~/.profile
 
+Install python on the VM :
+https://www.itsupportwale.com/blog/how-to-upgrade-to-python-3-9-0-on-ubuntu-18-04-lts/
 
-
+Problème dans installation de python dans la VM
+Problème pour obtenir le verrou :
+sudo rm /var/lib/dpkg/lock-frontend
+sudo rm /var/lib/apt/lists/lock
+sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock
 
 
