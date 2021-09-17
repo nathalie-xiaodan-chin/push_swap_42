@@ -73,17 +73,9 @@ program should display "OK".
 "[pb, ra, pb, ra, sa, ra, pa, pa]". The program should
 display "OK".
 
-## c. Online testers
-
-- Online testers I used :
+## c. Online tester
 
   https://github.com/lmalki-h/push_swap_tester
-
-  https://github.com/fleger42/push_swap_tester (linux)
-
-  https://github.com/mokolodi1/push-swap/blob/master/tester.py
-
-  https://github.com/BarbaraC12/PushSwap_tester
 
 # III. How to grade push_swap
 
