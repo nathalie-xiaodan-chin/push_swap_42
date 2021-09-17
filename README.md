@@ -79,10 +79,6 @@ display "OK".
 
   https://github.com/lmalki-h/push_swap_tester
 
-  https://github.com/busshi/push_swap_checker
-
-  https://github.com/LeoFu9487/push_swap_tester
-
   https://github.com/fleger42/push_swap_tester (linux)
 
   https://github.com/mokolodi1/push-swap/blob/master/tester.py
