@@ -44,19 +44,19 @@
 Online random number generator : https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
 
 ## a. Push_swap program
-- Test with arguments that aren’t integers. **Desired outcome : Error**
-- Test with duplicates. **Desired outcome : Error**
-- Test with empty string. **Desired outcome : Error**
-- Test with a mix of negative and positive numbers and then, only positive numbers and then, only negative numbers. **Desired outcome : OK**
-- Test with arguments bigger than an integer (`INT_MIN`, `INT_MAX`). **Desired outcome : Error**
+- Test with arguments that aren’t integers. The program must display "Error"
+- Test with duplicates. The program must display "Error"
+- Test with empty string. The program must not display anything
+- Test with a mix of negative and positive numbers and then, only positive numbers and then, only negative numbers.
+- Test with arguments bigger than an integer (`INT_MIN`, `INT_MAX`). The program must display "Error"
 - Test leaks with the command line (only mac) : `make push_swap && leaks -atExit -- ./push_swap "5 1 3 4 2"`
 - When running the program by passing the argument directly to the executable (i.e without an environment variable), check if it accepts string but also a list of integers.
 
   Example :
     `./push_swap "5 1 3 4 2"` and also `./push_swap 5 1 3 4 2`
-- Run the following command "$>./push_swap 42". The program should display nothing (0 instruction).
-- Run the following command "$>./push_swap 0 1 2 3". The program should display nothing (0 instruction).
-- Run the following command "$>./push_swap 0 1 2 3 4 5 6 7 8 9". The program should display nothing (0 instruction).
+- Run the following command `./push_swap 42`. The program should display nothing (0 instruction).
+- Run the following command `./push_swap 0 1 2 3`. The program should display nothing (0 instruction).
+- Run the following command `./push_swap 0 1 2 3 4 5 6 7 8 9`. The program should display nothing (0 instruction).
 
 ## b. Checker program
 
@@ -66,11 +66,11 @@ Online random number generator : https://www.calculatorsoup.com/calculators/stat
 - Run checker without any parameters. The program must not display anything and give the prompt back.
 - Run checker with valid parameters, and write an action that doesn't exist during the instruction phase. The program must display "Error".
 - Run checker with valid parameters, and write an action with one or several spaces before and/or after the action during the instruction phase. The program must display "Error".
-- Run checker with the following command "$>./checker 0 9 1 8 2 7 3 6 4 5" then write the following valid action list
+- Run checker with the following command `./checker 0 9 1 8 2 7 3 6 4 5` then write the following valid action list
 "[sa, pb, rrr]". Checker should display "KO".
-- Run checker with the following command "$>./checker 0 1 2" then press CTRL+D without writing any instruction. The
+- Run checker with the following command `./checker 0 1 2` then press CTRL+D without writing any instruction. The
 program should display "OK".
-- Run checker with the following command "$>./checker 0 9 1 8 2" then write the following valid action list
+- Run checker with the following command `./checker 0 9 1 8 2` then write the following valid action list
 "[pb, ra, pb, ra, sa, ra, pa, pa]". The program should
 display "OK".
 
