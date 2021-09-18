@@ -4,12 +4,14 @@
 - 1. without any checker
 
   `ARG="5 1 3 4 2" && make push_swap && ./push_swap $ARG`
+
 - 2. without any checker and using the command `wc` to count the instructions
 
   `ARG="5 1 3 4 2" && make push_swap && ./push_swap $ARG | wc -l`
+
 - 3. with the checker given by the school
 
-  `ARG="5 1 3 4 2" && make push_swap && ./push_swap $ARG | ./checker_Mac $ARG`
+  `ARG="5 1 3 4 2" && make push_swap && ./push_swap $ARG | ./checker_linux $ARG`
 
 - 4. with my own checker
 
@@ -28,20 +30,19 @@
 - 2. without the checker and using the command `wc` to count the instructions
 
   `make push_swap  && ./push_swap "5 1 3 4 2" | wc -l`
+
 - 3. with the checker given by the school
 
-  `make push_swap  && ./push_swap "5 1 3 4 2" | ./checker_Mac $ARG`
+  `make push_swap  && ./push_swap "5 1 3 4 2" | ./checker_linux "5 1 3 4 2"`
 
 - 4. with my own checker
 
-  `make push_swap  && ./push_swap "5 1 3 4 2" | ./checker $ARG`
-
-- 5. only with the checker
-
-  `./checker "5 1 3 4 2"`. Then, enter the list of instructions followed by enter. To stop the lecture of the instruction, ctrl-D in order to have an EOF
+  `make push_swap  && ./push_swap "5 1 3 4 2" | ./checker "5 1 3 4 2"`
 
 # II. How to test push_swap
+
 Online random number generator : https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
+
 ## a. Push_swap program
 - Test with arguments that aren’t integers. **Desired outcome : Error**
 - Test with duplicates. **Desired outcome : Error**
