@@ -1,53 +1,53 @@
 # I. How to run push_swap
 
 #### **a. With an environment variable :**
-- without any checker
+- 1. without any checker
 
   `ARG="5 1 3 4 2" && make push_swap && ./push_swap $ARG`
-- without any checker and using the command `wc` to count the instructions
+- 2. without any checker and using the command `wc` to count the instructions
 
   `ARG="5 1 3 4 2" && make push_swap && ./push_swap $ARG | wc -l`
-- with the checker given by the school
+- 3. with the checker given by the school
 
   `ARG="5 1 3 4 2" && make push_swap && ./push_swap $ARG | ./checker_Mac $ARG`
 
-- with my own checker
+- 4. with my own checker
 
   `ARG="5 1 3 4 2" && make push_swap && make checker && ./push_swap $ARG | ./checker $ARG`
 
-- only with my own checker
+- 5. only with my own checker
 
   `./checker "5 1 3 4 2"`. Then, enter the list of instructions followed by enter. To stop the lecture of the instruction, ctrl-D in order to have an EOF
 
 #### **b. Without an environment variable :**
 
-- without the checker
+- 1. without the checker
 
   `make push_swap  && ./push_swap "5 1 3 4 2"`
 
-- without the checker and using the command `wc` to count the instructions
+- 2. without the checker and using the command `wc` to count the instructions
 
   `make push_swap  && ./push_swap "5 1 3 4 2" | wc -l`
-- with the checker given by the school
+- 3. with the checker given by the school
 
   `make push_swap  && ./push_swap "5 1 3 4 2" | ./checker_Mac $ARG`
 
-- with my own checker
+- 4. with my own checker
 
   `make push_swap  && ./push_swap "5 1 3 4 2" | ./checker $ARG`
 
-- only with the checker
+- 5. only with the checker
 
   `./checker "5 1 3 4 2"`. Then, enter the list of instructions followed by enter. To stop the lecture of the instruction, ctrl-D in order to have an EOF
 
 # II. How to test push_swap
-
+Online random number generator : https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
 ## a. Push_swap program
-- Test with a mix of negative and positive numbers and then, only positive numbers and then, only negative numbers. **Desired outcome : OK**
-- Test with arguments bigger than an integer (`INT_MIN`, `INT_MAX`). **Desired outcome : Error**
 - Test with arguments that aren’t integers. **Desired outcome : Error**
 - Test with duplicates. **Desired outcome : Error**
 - Test with empty string. **Desired outcome : Error**
+- Test with a mix of negative and positive numbers and then, only positive numbers and then, only negative numbers. **Desired outcome : OK**
+- Test with arguments bigger than an integer (`INT_MIN`, `INT_MAX`). **Desired outcome : Error**
 - Test leaks with the command line (only mac) : `make push_swap && leaks -atExit -- ./push_swap "5 1 3 4 2"`
 - When running the program by passing the argument directly to the executable (i.e without an environment variable), check if it accepts string but also a list of integers.
 
@@ -76,6 +76,8 @@ display "OK".
 ## c. Online tester
 
   https://github.com/lmalki-h/push_swap_tester
+
+  https://github.com/tsannie/push_swap_tester
 
 # III. How to grade push_swap
 
