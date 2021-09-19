@@ -41,7 +41,7 @@
 
 # II. How to test push_swap
 
-Online random number generator : https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
+Online random number generator : https://numbergenerator.org/randomnumbergenerator/1-500
 
 ## a. Push_swap program
 - Test with arguments that aren’t integers. The program must display "Error"
